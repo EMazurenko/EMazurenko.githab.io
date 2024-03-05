@@ -12,15 +12,6 @@ code {
         monospace;
 }
 
-p {
-    margin-block-start: 0.7em;
-    margin-block-end: 0.7em;
-}
-
-ul {
-    margin-block-start: 0.7em;
-    margin-block-end: 0.7em;
-}
 
 .App {
     padding: 15px;
@@ -55,7 +46,6 @@ ul {
 
 .App-text-block {
     text-indent: 20px;
-    text-align: justify;
     margin-left: 10px;
 }
 
