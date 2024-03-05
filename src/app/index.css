@@ -12,12 +12,3 @@ code {
         monospace;
 }
 
-p {
-    margin-block-start: 0.7em;
-    margin-block-end: 0.7em;
-}
-
-ul {
-    margin-block-start: 0.7em;
-    margin-block-end: 0.7em;
-}
