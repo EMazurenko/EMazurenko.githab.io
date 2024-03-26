@@ -18,9 +18,7 @@ describe('all', () => {
       5: { name: 'David', age: 48, isSubscribed: false },
     });
   });
-});
 
-describe('all', () => {
   it('getNumberedArray', () => {
     const arr = ['red', 'green', 'blue']
 
@@ -32,9 +30,7 @@ describe('all', () => {
 
     expect(getNumberedArray(arr)).toEqual(expected)
   })
-});
 
-describe('all', () => {
   it('toStringArray', () => {
     const arr: ArrayItem<number>[] = [
       {value: 1, number: 0},
