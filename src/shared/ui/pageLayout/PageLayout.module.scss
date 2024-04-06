@@ -1,0 +1,8 @@
+@import '../variables.scss';
+
+.root {
+    margin: 0px auto;
+    background-color: rgb(249, 242, 232);
+    height: 200vh;
+    width: $app_width;
+}

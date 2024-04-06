@@ -61,6 +61,7 @@ module.exports = (_, args) => {
             },
             'css-loader',
           ],
+          exclude: /\.module\.s[ac]ss$/i
         },
         {
           test: /\.svg/,
