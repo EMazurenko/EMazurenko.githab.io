@@ -10,9 +10,9 @@ export const getFakeApi = async (): Promise<void> => {
 
 // Мы это не проходили, но по тексту ошибки можно понять, как это починить
 export class SomeClass {
-  set: Set<number>
-  channel: BroadcastChannel
-  
+  set: Set<number>;
+  channel: BroadcastChannel;
+
   constructor() {
     this.set = new Set([1]);
     this.channel = new BroadcastChannel('test-broadcast-channel');
@@ -43,10 +43,11 @@ export const getDataAmount = (data: Data): number | never => {
 
     default: {
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      const unhandled = (data: Data): never => { // здесь, возможно, нужно использовать нечто другое. :never должен остаться
-        throw new Error(`unknown type: ${data.type}`)
+      const unhandled = (data: Data): never => {
+        // здесь, возможно, нужно использовать нечто другое. :never должен остаться
+        throw new Error(`unknown type: ${data.type}`);
       };
-      unhandled(data)
+      unhandled(data);
     }
   }
 };

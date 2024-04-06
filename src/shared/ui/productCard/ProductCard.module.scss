@@ -1,25 +1,25 @@
 @import '../variables.scss';
 
 @mixin product_image_style($image_size) {
-    @include square_size($image_size);
-    border: 1px solid $main_color;
-    border-radius: 5px;
+  @include square_size($image_size);
+  border: 1px solid $main_color;
+  border-radius: 5px;
 }
 
 @mixin price_style($font_size) {
-    font-weight: bold;
-    font-style: italic;
-    font-size: $font_size;
-    color: $main_color;
+  font-weight: bold;
+  font-style: italic;
+  font-size: $font_size;
+  color: $main_color;
 }
 
 @mixin title_style($font_size) {
-    font-family: sans-serif;
-    font-size: $font_size;
+  font-family: sans-serif;
+  font-size: $font_size;
 }
 
 @mixin description_style($font_size) {
-    font-family: sans-serif;
-    font-size: $font_size;
-    color: $second_color;
+  font-family: sans-serif;
+  font-size: $font_size;
+  color: $second_color;
 }

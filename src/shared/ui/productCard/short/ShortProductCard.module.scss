@@ -5,50 +5,50 @@ $card_width: $app_width/3.5;
 $card_height: $app_width/2.3;
 
 .root {
-    width: $card_width;
-    height: $card_height;
-    border-radius: 5px;
-    box-shadow : 0px 0px 12px $main_color;
+  width: $card_width;
+  height: $card_height;
+  border-radius: 5px;
+  box-shadow: 0px 0px 12px $main_color;
 }
 
 .product_image {
-    display: block;
-    margin: 0 auto;
-    @include product_image_style($card_width * 0.9);
+  display: block;
+  margin: 0 auto;
+  @include product_image_style($card_width * 0.9);
 }
 
 .title {
-    @include title_style(16px);
-    margin: 0px;
-    padding: 8px;
-    max-width: 20ch;
-    overflow: hidden;
-    height: 1em;
-    line-height: 1.3em;
+  @include title_style(16px);
+  margin: 0px;
+  padding: 8px;
+  max-width: 20ch;
+  overflow: hidden;
+  height: 1em;
+  line-height: 1.3em;
 }
 
 .description {
-    @include description_style(14px);
-    margin: 0 auto;
-    padding: 6px 8px 4px 8px;
-    overflow: hidden;
-    height: 2em;
+  @include description_style(14px);
+  margin: 0 auto;
+  padding: 6px 8px 4px 8px;
+  overflow: hidden;
+  height: 2em;
 }
 
 .card_footer {
-    display: flex;
-    padding: 6px 8px 8px 8px;
-    align-items: center;
+  display: flex;
+  padding: 6px 8px 8px 8px;
+  align-items: center;
 }
 
 .sum {
-    @include price_style(18px);
-    float: left;
-    margin-left: 4px;
-    margin-right: auto;
+  @include price_style(18px);
+  float: left;
+  margin-left: 4px;
+  margin-right: auto;
 }
 
 .cart_button {
-    float: right;
-    margin-left: auto;
+  float: right;
+  margin-left: auto;
 }

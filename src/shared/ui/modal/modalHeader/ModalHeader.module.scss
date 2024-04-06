@@ -1,19 +1,18 @@
 $padding_size: 4px;
 
 .root {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    padding: $padding_size;    
+  position: relative;
+  display: flex;
+  justify-content: center;
+  padding: $padding_size;
 }
 
 .title {
-    margin: 8px;
+  margin: 8px;
 }
 
 .close_button {
-    position: absolute;
-    top: 5px;
-    right: 5px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
 }
-

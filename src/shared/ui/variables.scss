@@ -1,25 +1,25 @@
 $app_width: 700px;
-$main_color:  #a74e1b;
-$second_color: #7D2304;
+$main_color: #a74e1b;
+$second_color: #7d2304;
 
 @mixin square_size($dimension) {
-    width: $dimension;
-    height: $dimension;
+  width: $dimension;
+  height: $dimension;
 }
 
 @mixin button_style() {
-    color: $second_color;
-    background-color: #F2EBDE;
-    border: 2px solid $main_color;
-    cursor: pointer;
-    padding-inline: 3px;
-    text-align: center;
+  color: $second_color;
+  background-color: #f2ebde;
+  border: 2px solid $main_color;
+  cursor: pointer;
+  padding-inline: 3px;
+  text-align: center;
 }
 
 @mixin button_style_hover() {
-    background-color: #f3efe9;
+  background-color: #f3efe9;
 }
 
 @mixin button_style_active() {
-    background-color: #f6f5f5;
+  background-color: #f6f5f5;
 }
