@@ -1,0 +1,46 @@
+@import '../../../variables.scss';
+@import '../../ProductCard.module.scss';
+
+$image_width: $app_width/3;
+$button_width: 30%;
+
+@mixin image_button_style() {
+    position: absolute;
+    top: 0%;
+    height: 100%;
+    width: $button_width;
+    background: none;
+    border: none;
+    border-top: 1px solid $main_color;
+    border-bottom: 1px solid $main_color;
+    cursor: pointer;
+}
+
+.root {
+    position: relative;
+    @include square_size($image_width);
+}
+
+.product_image {
+    @include product_image_style(100%);
+    box-sizing: border-box;
+}
+
+.last_image_button {
+    @include image_button_style();
+    right: 100%;
+    margin-right: -$button_width;
+    border-radius: 5px 0px 0px 5px;
+    border-left: 1px solid $main_color;
+    background: linear-gradient(to right, white, rgba(255,255,255,0));
+}
+
+.next_image_button {
+    @include image_button_style();
+    left: 100%;
+    margin-left: -$button_width;
+    border-radius: 0px 5px 5px 0px;
+    border-right: 1px solid $main_color;
+    background: linear-gradient(to left, white, rgba(255,255,255,0));
+}
+
