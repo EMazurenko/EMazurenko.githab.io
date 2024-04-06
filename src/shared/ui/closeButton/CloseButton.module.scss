@@ -5,53 +5,53 @@ $close_red_hover: rgb(251, 137, 137);
 $close_red_active: rgb(206, 1, 1);
 
 @mixin default_size() {
-    @include square_size(12px);
-    border-radius: 2px;
+  @include square_size(12px);
+  border-radius: 2px;
 }
 
 .root {
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: white;
-    border-color: $close_red;
-    border-style: solid;
-    border-width: 2px;
-    cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-color: $close_red;
+  border-style: solid;
+  border-width: 2px;
+  cursor: pointer;
 
-    //default size
+  //default size
+  @include default_size();
+
+  &.small {
     @include default_size();
-    
-    &.small {
-        @include default_size();
-    }
+  }
 
-    &.large {
-        @include square_size(20px);
-        border-radius: 5px;
-    }
+  &.large {
+    @include square_size(20px);
+    border-radius: 5px;
+  }
+
+  .symbol {
+    border-width: 2px;
+    border-radius: 50%;
+    background-color: $close_red;
+    @include square_size(85%);
+  }
+
+  &:hover {
+    background-color: $close_red_hover;
 
     .symbol {
-        border-width: 2px;
-        border-radius: 50%;
-        background-color: $close_red;
-        @include square_size(85%);
+      background-color: white;
     }
+  }
 
-    &:hover {
-        background-color: $close_red_hover;
+  &:active {
+    background-color: $close_red_active;
 
-        .symbol {
-            background-color: white;
-        }
+    .symbol {
+      background-color: white;
     }
-
-    &:active {
-        background-color: $close_red_active;
-
-        .symbol {
-            background-color: white;
-        }
-    }
+  }
 }

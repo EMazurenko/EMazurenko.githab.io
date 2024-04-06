@@ -1,49 +1,49 @@
 @import '../../variables.scss';
 
 .decrease_button {
-    height: 100%;
-    width: 33%;
+  height: 100%;
+  width: 33%;
 
-    @include button_style();
+  @include button_style();
 
-    border-radius: 5px 0px 0px 5px;
+  border-radius: 5px 0px 0px 5px;
 
-    &:hover {
-        @include button_style_hover();
-    }
+  &:hover {
+    @include button_style_hover();
+  }
 
-    &:active {
-        @include button_style_active();
-    }
+  &:active {
+    @include button_style_active();
+  }
 }
 
 .count_input {
-    height: 100%;
-    width: 33%;
-    box-sizing: border-box;
-    border-width: 0;
-    border-style: none;
-    border-top: 2px solid $main_color;
-    border-bottom: 2px solid $main_color;
-    color: $main_color;
-    text-align: center;
+  height: 100%;
+  width: 33%;
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: none;
+  border-top: 2px solid $main_color;
+  border-bottom: 2px solid $main_color;
+  color: $main_color;
+  text-align: center;
 }
 
 .increase_button {
-    height: 100%;
-    width: 33%;
+  height: 100%;
+  width: 33%;
 
-    border-radius: 0px 5px 5px 0px;
+  border-radius: 0px 5px 5px 0px;
 
-    @include button_style();
+  @include button_style();
 
-    border-left: 1px solid $main_color;
+  border-left: 1px solid $main_color;
 
-    &:hover {
-        @include button_style_hover();
-    }
+  &:hover {
+    @include button_style_hover();
+  }
 
-    &:active {
-        @include button_style_active();
-    }
+  &:active {
+    @include button_style_active();
+  }
 }

@@ -20,30 +20,26 @@ describe('all', () => {
   });
 
   it('getNumberedArray', () => {
-    const arr = ['red', 'green', 'blue']
+    const arr = ['red', 'green', 'blue'];
 
     const expected: ArrayItem<string>[] = [
-      {value: 'red', number: 0},
-      {value: 'green', number: 1},
-      {value: 'blue', number: 2}
-    ]
+      { value: 'red', number: 0 },
+      { value: 'green', number: 1 },
+      { value: 'blue', number: 2 },
+    ];
 
-    expect(getNumberedArray(arr)).toEqual(expected)
-  })
+    expect(getNumberedArray(arr)).toEqual(expected);
+  });
 
   it('toStringArray', () => {
     const arr: ArrayItem<number>[] = [
-      {value: 1, number: 0},
-      {value: 2, number: 1},
-      {value: 3, number: 2}
-    ]
+      { value: 1, number: 0 },
+      { value: 2, number: 1 },
+      { value: 3, number: 2 },
+    ];
 
-    const expected = [
-      '1_0',
-      '2_1',
-      '3_2'
-    ]
+    const expected = ['1_0', '2_1', '3_2'];
 
-    expect(toStringArray(arr)).toEqual(expected)
-  })
+    expect(toStringArray(arr)).toEqual(expected);
+  });
 });

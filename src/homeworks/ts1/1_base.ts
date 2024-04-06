@@ -5,9 +5,9 @@ export const removePlus = (value: string): string => value.replace(/^\+/, '');
 
 export const addPlus = (value: string): string => `+${value}`;
 
-export const removeFirstZeros = (value: string): string=> value.replace(/^(-)?[0]+(-?\d+.*)$/, '$1$2');
+export const removeFirstZeros = (value: string): string => value.replace(/^(-)?[0]+(-?\d+.*)$/, '$1$2');
 
-type OptionalNumber = number | undefined
+type OptionalNumber = number | undefined;
 export const getBeautifulNumber = (value: OptionalNumber, separator = ' '): string =>
   value?.toString().replace(/\B(?=(\d{3})+(?!\d))/g, separator);
 
@@ -19,7 +19,7 @@ export const round = (value: number, accuracy = 2): number => {
 const transformRegexp =
   /(matrix\(-?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, -?\d+(\.\d+)?, )(-?\d+(\.\d+)?), (-?\d+(\.\d+)?)\)/;
 
-type Point = {x: number, y: number}
+type Point = { x: number; y: number };
 export const getTransformFromCss = (transformCssString: string): Point => {
   const data = transformCssString.match(transformRegexp);
   if (!data) return { x: 0, y: 0 };
@@ -29,12 +29,12 @@ export const getTransformFromCss = (transformCssString: string): Point => {
   };
 };
 
-type ColorComponents = [number, number, number]
+type ColorComponents = [number, number, number];
 export const getColorContrastValue = ([red, green, blue]: ColorComponents): number =>
   // http://www.w3.org/TR/AERT#color-contrast
   Math.round((red * 299 + green * 587 + blue * 114) / 1000);
 
-type ColorName = 'black' | 'white'
+type ColorName = 'black' | 'white';
 export const getContrastType = (contrastValue: number): ColorName => (contrastValue > 125 ? 'black' : 'white');
 
 export const shortColorRegExp = /^#[0-9a-f]{3}$/i;
@@ -58,12 +58,14 @@ export const hex2rgb = (color: string): ColorComponents | never => {
   return [red, green, blue];
 };
 
-export type ArrayItem<T> = {value: T, number: number}
-export const getNumberedArray = (arr: unknown[]): ArrayItem<unknown>[] => arr.map((value, number) => ({ value, number }));
-export const toStringArray = (arr: ArrayItem<unknown>[]): string[] => arr.map(({ value, number }) => `${value}_${number}`);
+export type ArrayItem<T> = { value: T; number: number };
+export const getNumberedArray = (arr: unknown[]): ArrayItem<unknown>[] =>
+  arr.map((value, number) => ({ value, number }));
+export const toStringArray = (arr: ArrayItem<unknown>[]): string[] =>
+  arr.map(({ value, number }) => `${value}_${number}`);
 
-type Customer = {name: string, age: number, isSubscribed: boolean, id?: number}
-type IndexableCustomers = {[index: number]: Customer}
+type Customer = { name: string; age: number; isSubscribed: boolean; id?: number };
+type IndexableCustomers = { [index: number]: Customer };
 export const transformCustomers = (customers: Customer[]): IndexableCustomers => {
   return customers.reduce((acc: IndexableCustomers, customer: Customer): IndexableCustomers => {
     acc[customer.id] = { name: customer.name, age: customer.age, isSubscribed: customer.isSubscribed };

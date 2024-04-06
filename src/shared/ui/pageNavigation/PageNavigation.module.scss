@@ -3,19 +3,19 @@
 $border-thickness: 2px;
 
 .root {
-    position: fixed;
-    top: 160px;
-    border-radius: 4px;
-    border: $border-thickness solid $main_color;
-    background-color: white;
-    width: $app_width - $border-thickness;
+  position: fixed;
+  top: 160px;
+  border-radius: 4px;
+  border: $border-thickness solid $main_color;
+  background-color: white;
+  width: $app_width - $border-thickness;
 
-    li {
-        font-family: sans-serif;
-        text-transform: uppercase;
-        letter-spacing: 0.03em;
-        color: $main_color;
-        display: inline;
-        margin-right: 20px;
-    }
+  li {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    color: $main_color;
+    display: inline;
+    margin-right: 20px;
+  }
 }

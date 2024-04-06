@@ -1,17 +1,17 @@
 @import '../../variables.scss';
 
 .cart_button {
-    @include square_size(100%);
-    
-    border-radius: 5px;
+  @include square_size(100%);
 
-    @include button_style();
+  border-radius: 5px;
 
-    &:hover {
-        @include button_style_hover();
-    }
+  @include button_style();
 
-    &:active {
-        @include button_style_active();
-    }
+  &:hover {
+    @include button_style_hover();
+  }
+
+  &:active {
+    @include button_style_active();
+  }
 }
