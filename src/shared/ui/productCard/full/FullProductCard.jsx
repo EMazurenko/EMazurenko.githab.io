@@ -9,10 +9,9 @@ export const FullProductCard = ({
   category = 'Категория',
   title = 'Продукт',
   description = 'Описание',
-  sum = 99.99,
+  price = 99.99,
   photo_urls = [photo_stub, photo_stub],
   initCountItems = 0,
-  handlerCountItem,
 }) => {
   return (
     <div className={s.root}>
@@ -22,8 +21,8 @@ export const FullProductCard = ({
         </div>
         <div className={s.info_block}>
           <div className={s.cart_panel}>
-            <span className={s.sum}>{priceFormatter.format(sum)}</span>
-            <CartButton size="large" handlerCountItem={handlerCountItem} initCountItems={initCountItems} />
+            <span className={s.price}>{priceFormatter.format(price)}</span>
+            <CartButton size="large" initCountItems={initCountItems} />
           </div>
           <p className={s.category}>{category}</p>
           <p className={s.title}>{title}</p>

@@ -46,7 +46,7 @@ $card_width: $app_width/1.3;
   width: 100%;
 }
 
-.sum {
+.price {
   @include price_style(20px);
   margin-left: auto;
   margin-right: 20px;

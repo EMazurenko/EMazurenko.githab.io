@@ -7,10 +7,9 @@ import { priceFormatter } from '../../../utils/FormatUtils';
 export const ShortProductCard = ({
   title = 'Продукт',
   description = 'Описание',
-  sum = 99.99,
+  price = 99.99,
   initCountItems = 0,
   photo_url = photo_stub,
-  handlerCountItem,
 }) => {
   return (
     <div className={s.root}>
@@ -18,13 +17,8 @@ export const ShortProductCard = ({
       <img className={s.product_image} src={photo_url} alt="Фото товара" />
       <p className={s.description}>{description}</p>
       <div className={s.card_footer}>
-        <span className={s.sum}>{priceFormatter.format(sum)}</span>
-        <CartButton
-          className={s.cart_button}
-          size="medium"
-          initCountItems={initCountItems}
-          handlerCountItem={handlerCountItem}
-        />
+        <span className={s.price}>{priceFormatter.format(price)}</span>
+        <CartButton className={s.cart_button} size="medium" initCountItems={initCountItems} />
       </div>
     </div>
   );

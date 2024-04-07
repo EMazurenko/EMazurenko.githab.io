@@ -26,7 +26,7 @@ export const ProductCard = ({
         <ShortProductCard
           title={title}
           description={description}
-          sum={sum}
+          price={price}
           initCountItems={initCountItems}
           photo_url={photo_urls[0]}
           handlerCountItem={changeSum}
@@ -52,10 +52,9 @@ export const ProductCard = ({
           category={category}
           title={title}
           description={description}
-          sum={sum}
+          price={price}
           initCountItems={initCountItems}
           photo_urls={photo_urls}
-          handlerCountItem={changeSum}
         />
       );
       break;
