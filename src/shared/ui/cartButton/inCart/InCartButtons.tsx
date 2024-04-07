@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import s from './InCartButtons.module.scss';
 import cart from './cart.svg';
+import { CartButtonsProps } from '../CartButton.types';
 
-export const InCartButtons = ({ countItems, addItem, removeItem, setCountItems }) => {
+export const InCartButtons: FC<CartButtonsProps> = ({ countItems, addItem, removeItem, setCountItems }) => {
   return (
     <>
       <button className={s.cart_button}>

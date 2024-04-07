@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { CartButton } from '../../cartButton/CartButton';
 import s from './InCartProductCard.module.scss';
 import photo_stub from '../stub.png';
 import { priceFormatter } from '../../../utils/FormatUtils';
+import { ProductCardProps } from '../ProductCard.types';
 
-export const InCartProductCard = ({
+type InCartProductCardProps = Omit<ProductCardProps, 'price' | 'description'> & { sum: number };
+
+export const InCartProductCard: FC<InCartProductCardProps> = ({
   title = 'Продукт',
   sum = 99.99,
   photo_url = photo_stub,

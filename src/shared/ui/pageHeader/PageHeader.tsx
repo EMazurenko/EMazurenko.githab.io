@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Logo } from '../logo/Logo';
 import s from './PageHeader.module.scss';
 
@@ -8,7 +8,7 @@ const appTitle = (
   </h2>
 );
 
-export const PageHeader = () => {
+export const PageHeader: FC = () => {
   return (
     <div className={s.root}>
       <Logo />

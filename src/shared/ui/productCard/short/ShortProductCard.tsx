@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { CartButton } from '../../cartButton/CartButton';
 import s from './ShortProductCard.module.scss';
 import photo_stub from '../stub.png';
 import { priceFormatter } from '../../../utils/FormatUtils';
+import { ProductCardProps } from '../ProductCard.types';
 
-export const ShortProductCard = ({
+type ShortProductCardProps = Omit<ProductCardProps, 'handlerCountItem'>;
+
+export const ShortProductCard: FC<ShortProductCardProps> = ({
   title = 'Продукт',
   description = 'Описание',
   price = 99.99,

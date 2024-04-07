@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import s from './ImageList.module.scss';
 
-export const ImageList = ({ images }) => {
+type ImageListProps = {
+  images: string[];
+};
+
+export const ImageList: FC<ImageListProps> = ({ images }) => {
   const imagesCount = images.length;
   const [currentImageIdx, setCurrentImageIdx] = useState(0);
 
