@@ -1,4 +1,5 @@
-import { CloseButton } from './CloseButton';
+import React from 'react';
+import { CloseButton, CloseButtonProps } from './CloseButton';
 
 export default {
   title: 'UI/Close button',
@@ -16,14 +17,20 @@ export default {
   },
 };
 
-const Template = (args) => <CloseButton {...args} />;
+const Template = (args: CloseButtonProps) => <CloseButton {...args} />;
+
+const handlerClose = () => console.log('Click button close!');
 
 export const Small = Template.bind({});
-Small.args = {
+const smallArgs: CloseButtonProps = {
   size: 'small',
+  handlerClose,
 };
+Small.args = smallArgs;
 
 export const Large = Template.bind({});
-Large.args = {
+const largeArgs: CloseButtonProps = {
   size: 'large',
+  handlerClose,
 };
+Large.args = largeArgs;

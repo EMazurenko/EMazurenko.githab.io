@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { FC } from 'react';
 import s from './PageNavigation.module.scss';
 
-export const PageNavigation = () => {
+export const PageNavigation: FC = () => {
   return (
     <div className={s.root}>
       <ul>

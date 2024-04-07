@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import cn from 'clsx';
 import s from './CartButton.module.scss';
 import { ToCartButton } from './toCart/ToCartButton';
 import { InCartButtons } from './inCart/InCartButtons';
 import { FromCartButton } from './fromCart/FromCartButton';
+import { CartButtonContainerProps } from './CartButton.types';
 
-export const CartButton = ({
+export const CartButton: FC<CartButtonContainerProps> = ({
   size = 'medium',
   isFromCart = false,
   initCountItems = 0,
@@ -29,7 +30,7 @@ export const CartButton = ({
     handlerCountItem && handlerCountItem(newCountItems);
   };
 
-  const changeCountItems = (e) => {
+  const changeCountItems = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newCountItems = parseInt(e.target.value.trim());
     if (isCorrectCount(newCountItems, countItems)) {
       setCountItems(newCountItems);
@@ -37,10 +38,10 @@ export const CartButton = ({
     }
   };
 
-  const isCorrectCount = (newCountValue, currentCountValue) =>
+  const isCorrectCount = (newCountValue: number, currentCountValue: number) =>
     newCountValue >= 0 && newCountValue < 100 && newCountValue != currentCountValue;
 
-  const toCartButton = <ToCartButton onClick={increaseCountItems} />;
+  const toCartButton = <ToCartButton addItem={increaseCountItems} />;
 
   const inCartButton = (
     <InCartButtons

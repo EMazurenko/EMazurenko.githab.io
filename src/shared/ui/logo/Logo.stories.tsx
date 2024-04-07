@@ -1,4 +1,5 @@
-import { Logo } from './Logo';
+import React from 'react';
+import { Logo, LogoProps } from './Logo';
 
 export default {
   title: 'UI/Logo',
@@ -16,14 +17,16 @@ export default {
   },
 };
 
-const Template = (args) => <Logo {...args} />;
+const Template = (args: LogoProps) => <Logo {...args} />;
 
 export const Small = Template.bind({});
-Small.args = {
+const smallArgs = {
   size: 'small',
 };
+Small.args = smallArgs;
 
 export const Medium = Template.bind({});
-Medium.args = {
+const mediumArgs = {
   size: 'medium',
 };
+Medium.args = mediumArgs;

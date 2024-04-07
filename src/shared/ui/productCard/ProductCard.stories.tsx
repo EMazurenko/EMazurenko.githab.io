@@ -1,4 +1,6 @@
+import React from 'react';
 import { ProductCard } from './ProductCard';
+import { ProductCardContainerProps } from './ProductCard.types';
 
 export default {
   title: 'UI/Shop/Product card',
@@ -28,19 +30,19 @@ export default {
   },
 };
 
-const Template = (args) => <ProductCard {...args} />;
+const Template = (args: ProductCardContainerProps) => <ProductCard {...args} />;
 
 export const Full = Template.bind({});
 Full.args = {
   type: 'Full',
-};
+} as ProductCardContainerProps;
 
 export const Short = Template.bind({});
 Short.args = {
   type: 'Short',
-};
+} as ProductCardContainerProps;
 
 export const InCart = Template.bind({});
 InCart.args = {
   type: 'InCart',
-};
+} as ProductCardContainerProps;

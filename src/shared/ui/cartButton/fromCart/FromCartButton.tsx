@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { FC } from 'react';
 import s from './FromCartButton.module.scss';
 import basket from './basket.svg';
+import { CartButtonsProps } from '../CartButton.types';
 
-export const FromCartButton = ({ countItems, addItem, removeItem, setCountItems }) => {
+export const FromCartButton: FC<CartButtonsProps> = ({ countItems, addItem, removeItem, setCountItems }) => {
   const basketButton = (
     <button className={s.decrease_button}>
       <img src={basket} alt="Убрать из корзины" />
