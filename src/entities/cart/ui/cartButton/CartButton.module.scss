@@ -1,0 +1,29 @@
+@import 'src/shared/ui/variables.scss';
+
+@mixin cart_button_size($width) {
+  height: $width * 0.4;
+  width: $width;
+}
+
+.root {
+  align-items: center;
+  display: flex;
+
+  @include cart_button_size(100px);
+
+  &.medium {
+    @include cart_button_size(80px);
+    button,
+    input {
+      font-size: 15px;
+    }
+  }
+
+  &.large {
+    @include cart_button_size(100px);
+    button,
+    input {
+      font-size: 18px;
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import { CloseButton, CloseButtonProps } from './CloseButton';
 
 export default {
-  title: 'UI/Close button',
+  title: 'UI Kit/Close button',
   component: CloseButton,
   argTypes: {
     size: {

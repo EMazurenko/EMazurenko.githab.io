@@ -2,7 +2,7 @@ import React from 'react';
 import { ModalWindow, ModalWindowProps } from './ModalWindow';
 
 export default {
-  title: 'UI/Modal window',
+  title: 'UI Kit/Modal window',
   component: ModalWindow,
   argTypes: {
     visible: {

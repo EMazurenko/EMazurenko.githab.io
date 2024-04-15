@@ -2,7 +2,7 @@ import React from 'react';
 import { Logo, LogoProps } from './Logo';
 
 export default {
-  title: 'UI/Logo',
+  title: 'UI Kit/Logo',
   component: Logo,
   argTypes: {
     size: {
