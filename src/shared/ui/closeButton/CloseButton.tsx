@@ -4,15 +4,15 @@ import s from './CloseButton.module.scss';
 
 export type CloseButtonProps = {
   size: 'small' | 'large';
-  handlerClose?: () => void;
+  onClose?: () => void;
   className?: string;
 };
 
-export const CloseButton: FC<CloseButtonProps> = ({ size = 'small', handlerClose, className }) => {
+export const CloseButton: FC<CloseButtonProps> = ({ size = 'small', onClose, className }) => {
   const classNames = cn(s.root, s[size], className);
 
   return (
-    <button className={classNames} onClick={handlerClose}>
+    <button className={classNames} onClick={onClose}>
       <div className={s.symbol} />
     </button>
   );

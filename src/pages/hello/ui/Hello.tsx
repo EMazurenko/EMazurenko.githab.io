@@ -1,8 +1,10 @@
 import React, { FC } from 'react';
 import logo from './logo.svg';
 import s from './Hello.scss';
+import useChangePageTitle from 'src/features/changePageTitle/model/useChangePageTitle';
 
 export const Hello: FC = () => {
+  useChangePageTitle('titlePage.hello');
   return (
     <>
       <header className={s.header}>

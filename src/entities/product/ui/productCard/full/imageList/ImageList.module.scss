@@ -1,7 +1,7 @@
 @import 'src/shared/ui/variables.scss';
 @import '../../ProductCard.module.scss';
 
-$image_width: $app_width/3;
+$image_width: calc($app-width / 3);
 $button_width: 30%;
 
 @mixin image_button_style() {
@@ -11,8 +11,9 @@ $button_width: 30%;
   width: $button_width;
   background: none;
   border: none;
-  border-top: 1px solid $main_color;
-  border-bottom: 1px solid $main_color;
+  border-top: 1px solid;
+  border-bottom: 1px solid;
+  @include theme(border-color, main_color);
   cursor: pointer;
 }
 
@@ -31,7 +32,8 @@ $button_width: 30%;
   right: 100%;
   margin-right: -$button_width;
   border-radius: 5px 0px 0px 5px;
-  border-left: 1px solid $main_color;
+  border-left: 1px solid;
+  @include theme(border-color, main_color);
   background: linear-gradient(to right, white, rgba(255, 255, 255, 0));
 }
 
@@ -40,6 +42,7 @@ $button_width: 30%;
   left: 100%;
   margin-left: -$button_width;
   border-radius: 0px 5px 5px 0px;
-  border-right: 1px solid $main_color;
+  border-right: 1px solid;
+  @include theme(border-color, main_color);
   background: linear-gradient(to left, white, rgba(255, 255, 255, 0));
 }

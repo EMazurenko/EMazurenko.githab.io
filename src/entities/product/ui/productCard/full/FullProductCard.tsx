@@ -6,7 +6,7 @@ import photo_stub from '../stub.png';
 import { priceFormatter } from 'src/shared/utils/FormatUtils';
 import { ProductCardProps } from '../ProductCard.types';
 
-type FullProductCardProps = Omit<ProductCardProps, 'handlerCountItem'>;
+type FullProductCardProps = Omit<ProductCardProps, 'onSetNewCountItem'>;
 
 export const FullProductCard: FC<FullProductCardProps> = ({
   category = 'Категория',

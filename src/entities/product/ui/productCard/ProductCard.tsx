@@ -4,6 +4,7 @@ import { InCartProductCard } from './inCart/InCartProductCard';
 import { FullProductCard } from './full/FullProductCard';
 import photo_stub from './stub.png';
 import { ProductCardContainerProps } from './ProductCard.types';
+import s from './ProductCard.module.scss';
 
 export const ProductCard: FC<ProductCardContainerProps> = ({
   type = 'Short',
@@ -25,6 +26,7 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
     case 'Short':
       productCard = (
         <ShortProductCard
+          className={s.root}
           title={title}
           description={description}
           price={price}
@@ -37,11 +39,12 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
     case 'InCart':
       productCard = (
         <InCartProductCard
+          className={s.root}
           title={title}
           sum={sum}
           initCountItems={initCountItems}
           photo_url={photo_url[0]}
-          handlerCountItem={changeSum}
+          onSetNewCountItem={changeSum}
         />
       );
       break;
@@ -49,6 +52,7 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
     case 'Full':
       productCard = (
         <FullProductCard
+          className={s.root}
           category={category}
           title={title}
           description={description}

@@ -1,8 +1,22 @@
 @import 'src/shared/ui/variables.scss';
 
+$layout_height: 200vh;
+$content_position_top: 30vh;
+
 .root {
   margin: 0px auto;
-  background-color: rgb(249, 242, 232);
-  height: 200vh;
+  @include theme(background-color, layout_bg);
+  height: $layout_height;
   width: $app_width;
+}
+
+.header {
+  z-index: 2;
+  position: relative;
+}
+
+.content {
+  padding: 10px;
+  position: relative;
+  top: $content_position_top;
 }

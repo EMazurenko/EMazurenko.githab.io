@@ -12,7 +12,7 @@ export const InCartProductCard: FC<InCartProductCardProps> = ({
   sum = 99.99,
   photo_url = photo_stub,
   initCountItems = 1,
-  handlerCountItem,
+  onSetNewCountItem,
 }) => {
   return (
     <div className={s.root}>
@@ -26,7 +26,7 @@ export const InCartProductCard: FC<InCartProductCardProps> = ({
             size="medium"
             initCountItems={initCountItems}
             isFromCart={true}
-            handlerCountItem={handlerCountItem}
+            onSetNewCountItem={onSetNewCountItem}
           />
         </span>
       </div>

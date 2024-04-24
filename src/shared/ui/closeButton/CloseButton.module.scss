@@ -1,9 +1,5 @@
 @import '../variables.scss';
 
-$close_red: #aa0000;
-$close_red_hover: rgb(251, 137, 137);
-$close_red_active: rgb(206, 1, 1);
-
 @mixin default_size() {
   @include square_size(12px);
   border-radius: 2px;
@@ -14,13 +10,12 @@ $close_red_active: rgb(206, 1, 1);
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: white;
-  border-color: $close_red;
+  @include theme(background-color, main_bg);
+  @include theme(border-color, button_close);
   border-style: solid;
   border-width: 2px;
   cursor: pointer;
 
-  //default size
   @include default_size();
 
   &.small {
@@ -35,23 +30,23 @@ $close_red_active: rgb(206, 1, 1);
   .symbol {
     border-width: 2px;
     border-radius: 50%;
-    background-color: $close_red;
+    @include theme(background-color, button_close);
     @include square_size(85%);
   }
 
   &:hover {
-    background-color: $close_red_hover;
+    @include theme(background-color, button_close_hover);
 
     .symbol {
-      background-color: white;
+      @include theme(background-color, main_bg);
     }
   }
 
   &:active {
-    background-color: $close_red_active;
+    @include theme(background-color, button_close_active);
 
     .symbol {
-      background-color: white;
+      @include theme(background-color, main_bg);
     }
   }
 }

@@ -5,12 +5,12 @@ export type CartButtonContainerProps = {
   isFromCart?: boolean;
   initCountItems: number;
   className?: string;
-  handlerCountItem?: (newCountItems: number) => void;
+  onSetNewCountItem?: (newCountItems: number) => void;
 };
 
 export type CartButtonsProps = {
   countItems: number;
-  addItem: () => void;
-  removeItem: () => void;
-  setCountItems: (e: ChangeEvent<HTMLInputElement>) => void;
+  onAddItem: () => void;
+  onRemoveItem: () => void;
+  onChangeCountItems: (e: ChangeEvent<HTMLInputElement>) => void;
 };

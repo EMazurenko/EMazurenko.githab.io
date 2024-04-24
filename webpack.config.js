@@ -64,7 +64,7 @@ module.exports = (_, args) => {
           exclude: /\.module\.s[ac]ss$/i,
         },
         {
-          test: /\.svg/,
+          test: /\.(svg)|(png)/,
           type: 'asset/inline',
         },
         {

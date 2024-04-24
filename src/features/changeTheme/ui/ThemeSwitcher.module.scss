@@ -1,0 +1,18 @@
+@import 'src/shared/ui/variables.scss';
+@import 'src/shared/ui/themes';
+
+.root {
+  position: relative;
+  @include square_size(24px);
+  background-color: rgba(255, 255, 255, 0);
+  border: none;
+  cursor: pointer;
+  text-align: center;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+  }
+}

@@ -5,7 +5,7 @@ import photo_stub from '../stub.png';
 import { priceFormatter } from 'src/shared/utils/FormatUtils';
 import { ProductCardProps } from '../ProductCard.types';
 
-type ShortProductCardProps = Omit<ProductCardProps, 'handlerCountItem'>;
+type ShortProductCardProps = Omit<ProductCardProps, 'onSetNewCountItem'>;
 
 export const ShortProductCard: FC<ShortProductCardProps> = ({
   title = 'Продукт',

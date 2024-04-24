@@ -1,12 +1,12 @@
 @import 'src/shared/ui/variables.scss';
 @import '../ProductCard.module.scss';
 
-$card_width: $app_width/2;
+$card_width: calc($app-width / 2);
 
 .root {
   width: $card_width;
   border-radius: 5px;
-  box-shadow: 0px 0px 12px $main_color;
+  @include theme(box-shadow, product_card_box_shadow);
   display: flex;
 }
 

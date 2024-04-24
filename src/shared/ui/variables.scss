@@ -1,3 +1,5 @@
+@import 'themes';
+
 $app_width: 700px;
 $main_color: #a74e1b;
 $second_color: #7d2304;
@@ -8,18 +10,19 @@ $second_color: #7d2304;
 }
 
 @mixin button_style() {
-  color: $second_color;
-  background-color: #f2ebde;
-  border: 2px solid $main_color;
+  @include theme(color, second_color);
+  @include theme(background-color, button_bg);
+  border: 2px solid;
+  @include theme(border-color, main_color);
   cursor: pointer;
   padding-inline: 3px;
   text-align: center;
 }
 
 @mixin button_style_hover() {
-  background-color: #f3efe9;
+  @include theme(background-color, button_bg_hover);
 }
 
 @mixin button_style_active() {
-  background-color: #f6f5f5;
+  @include theme(background-color, button_bg_active);
 }

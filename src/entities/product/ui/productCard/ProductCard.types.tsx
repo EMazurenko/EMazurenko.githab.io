@@ -3,11 +3,12 @@ export type ProductCardContainerProps = {
 } & Partial<ProductCardProps>;
 
 export type ProductCardProps = {
+  className?: string;
   category?: string;
   title: string;
   description: string;
   price: number;
   initCountItems: number;
   photo_url: string | string[];
-  handlerCountItem: (newCountItem: number) => void;
+  onSetNewCountItem: (newCountItem: number) => void;
 };

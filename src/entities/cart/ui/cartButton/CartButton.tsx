@@ -1,7 +1,7 @@
 import React, { FC, useState } from 'react';
 import cn from 'clsx';
 import s from './CartButton.module.scss';
-import { ToCartButton } from './toCart/ToCartButton';
+import ToCartButton from './toCart/ToCartButton';
 import { InCartButtons } from './inCart/InCartButtons';
 import { FromCartButton } from './fromCart/FromCartButton';
 import { CartButtonContainerProps } from './CartButton.types';
@@ -11,52 +11,52 @@ export const CartButton: FC<CartButtonContainerProps> = ({
   isFromCart = false,
   initCountItems = 0,
   className,
-  handlerCountItem,
+  onSetNewCountItem,
 }) => {
   const MAX_COUNT_ITEMS = 99;
   const [countItems, setCountItems] = useState(initCountItems);
 
-  const increaseCountItems = () => {
+  const handleIncreaseCountItems = () => {
     if (MAX_COUNT_ITEMS > countItems) {
       const newCountItems = countItems + 1;
       setCountItems(newCountItems);
-      handlerCountItem && handlerCountItem(newCountItems);
+      onSetNewCountItem && onSetNewCountItem(newCountItems);
     }
   };
 
-  const decreaseCountItems = () => {
+  const handleDecreaseCountItems = () => {
     const newCountItems = countItems - 1;
     setCountItems(newCountItems);
-    handlerCountItem && handlerCountItem(newCountItems);
+    onSetNewCountItem && onSetNewCountItem(newCountItems);
   };
 
-  const changeCountItems = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChangeCountItems = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newCountItems = parseInt(e.target.value.trim());
     if (isCorrectCount(newCountItems, countItems)) {
       setCountItems(newCountItems);
-      handlerCountItem && handlerCountItem(newCountItems);
+      onSetNewCountItem && onSetNewCountItem(newCountItems);
     }
   };
 
   const isCorrectCount = (newCountValue: number, currentCountValue: number) =>
     newCountValue >= 0 && newCountValue < 100 && newCountValue != currentCountValue;
 
-  const toCartButton = <ToCartButton addItem={increaseCountItems} />;
+  const toCartButton = <ToCartButton onAddItem={handleIncreaseCountItems} />;
 
   const inCartButton = (
     <InCartButtons
-      addItem={increaseCountItems}
-      removeItem={decreaseCountItems}
-      setCountItems={changeCountItems}
+      onAddItem={handleIncreaseCountItems}
+      onRemoveItem={handleDecreaseCountItems}
+      onChangeCountItems={handleChangeCountItems}
       countItems={countItems}
     />
   );
 
   const fromCartButton = (
     <FromCartButton
-      addItem={increaseCountItems}
-      removeItem={decreaseCountItems}
-      setCountItems={changeCountItems}
+      onAddItem={handleIncreaseCountItems}
+      onRemoveItem={handleDecreaseCountItems}
+      onChangeCountItems={handleChangeCountItems}
       countItems={countItems}
     />
   );

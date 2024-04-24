@@ -1,24 +1,24 @@
 import React, { FC } from 'react';
 import s from './FromCartButton.module.scss';
-import basket from './basket.svg';
+import { BasketIcon } from './BasketIcon';
 import { CartButtonsProps } from '../CartButton.types';
 
-export const FromCartButton: FC<CartButtonsProps> = ({ countItems, addItem, removeItem, setCountItems }) => {
+export const FromCartButton: FC<CartButtonsProps> = ({ countItems, onAddItem, onRemoveItem, onChangeCountItems }) => {
   const basketButton = (
     <button className={s.decrease_button}>
-      <img src={basket} alt="Убрать из корзины" />
+      <BasketIcon />
     </button>
   );
   const deacreaseButton = (
-    <button className={s.decrease_button} onClick={removeItem}>
+    <button className={s.decrease_button} onClick={onRemoveItem}>
       -
     </button>
   );
   return (
     <>
       {countItems <= 1 ? basketButton : deacreaseButton}
-      <input className={s.count_input} value={countItems} onChange={setCountItems} />
-      <button className={s.increase_button} onClick={addItem}>
+      <input className={s.count_input} value={countItems} onChange={onChangeCountItems} />
+      <button className={s.increase_button} onClick={onAddItem}>
         +
       </button>
     </>

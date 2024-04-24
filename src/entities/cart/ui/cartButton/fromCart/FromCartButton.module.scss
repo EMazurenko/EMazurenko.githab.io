@@ -23,9 +23,11 @@
   box-sizing: border-box;
   border-width: 0;
   border-style: none;
-  border-top: 2px solid $main_color;
-  border-bottom: 2px solid $main_color;
-  color: $main_color;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  @include theme(border-color, main_color);
+  @include theme(background-color, main_bg);
+  @include theme(color, main_color);
   text-align: center;
 }
 
@@ -37,7 +39,8 @@
 
   @include button_style();
 
-  border-left: 1px solid $main_color;
+  border-left: 1px solid;
+  @include theme(border-color, main_color);
 
   &:hover {
     @include button_style_hover();
