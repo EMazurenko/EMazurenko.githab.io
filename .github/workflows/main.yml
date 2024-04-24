@@ -34,16 +34,16 @@ jobs:
       - name: Run tests and linter
         run: npm run lint && npm test
 
-       # Собираем приложение
-       - name: Build Application
-         run: npm run build
+      # Собираем приложение
+      - name: Build Application
+        run: npm run build
 
-       # Публикуем приложение на Github Pages
-       - name: Deploy to Github Pages
-         uses: JamesIves/github-pages-deploy-action@4.2.1
-         with:
-           branch: gh-pages
-           folder: dist
+      # Публикуем приложение на Github Pages
+      - name: Deploy to Github Pages
+        uses: JamesIves/github-pages-deploy-action@4.2.1
+        with:
+          branch: gh-pages
+          folder: dist
 
 #      # Собираем Storybook
 #      - name: Build Storybook
