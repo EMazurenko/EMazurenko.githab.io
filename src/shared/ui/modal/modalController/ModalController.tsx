@@ -28,8 +28,8 @@ const reducer = (state: ModalControllerState, action: ModalControllerAction): Mo
 
 export const ModalController: FC = () => {
   const [state, dispatch] = useReducer(reducer, { needShow: false, windowTitle: '', windowContent: '' });
-  const titleElementName: string = 'title';
-  const contentElementName: string = 'content';
+  const titleElementName = 'title';
+  const contentElementName = 'content';
 
   const handleShow = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
