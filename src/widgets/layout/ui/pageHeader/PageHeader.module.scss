@@ -1,0 +1,33 @@
+@import 'src/shared/ui/variables.scss';
+
+$padding_size: 10px;
+
+.root {
+  position: fixed;
+  margin: 0 auto;
+  padding: $padding_size;
+  @include theme(box-shadow, header_box_shadow);
+  border-radius: 4px;
+  @include theme(background-color, main_bg);
+  width: $app_width - 2 * $padding_size;
+  display: flex;
+  align-items: center;
+
+  h2 {
+    display: inline;
+    font-family: sans-serif;
+    font-size: 40px;
+    margin: 0 10px;
+    @include theme(color, main_color);
+
+    &:first-letter {
+      @include theme(color, second_color);
+      font-size: 45px;
+      font-style: italic;
+    }
+
+    i {
+      @include theme(color, title_color);
+    }
+  }
+}

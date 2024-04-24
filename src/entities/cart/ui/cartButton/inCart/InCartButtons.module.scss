@@ -1,0 +1,71 @@
+@import 'src/shared/ui/variables.scss';
+
+.cart_button {
+  height: 100%;
+  width: 26%;
+  margin-right: 3%;
+
+  border-radius: 5px 0px 0px 5px;
+
+  @include button_style();
+
+  &:hover {
+    @include button_style_hover();
+  }
+
+  &:active {
+    @include button_style_active();
+  }
+}
+
+.decrease_button {
+  height: 100%;
+  width: 22%;
+
+  @include button_style();
+
+  border-right: 1px solid;
+  @include theme(border-color, main_color);
+
+  &:hover {
+    @include button_style_hover();
+  }
+
+  &:active {
+    @include button_style_active();
+  }
+}
+
+.count_input {
+  height: 100%;
+  width: 27%;
+  box-sizing: border-box;
+  border-width: 0;
+  border-style: none;
+  border-top: 2px solid;
+  border-bottom: 2px solid;
+  @include theme(border-color, main_color);
+  @include theme(background-color, main_bg);
+  @include theme(color, main_color);
+  text-align: center;
+}
+
+.increase_button {
+  height: 100%;
+  width: 22%;
+
+  border-radius: 0px 5px 5px 0px;
+
+  @include button_style();
+
+  border-left: 1px solid;
+  @include theme(border-color, main_color);
+
+  &:hover {
+    @include button_style_hover();
+  }
+
+  &:active {
+    @include button_style_active();
+  }
+}

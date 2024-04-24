@@ -1,0 +1,10 @@
+@import 'src/shared/ui/variables';
+
+.root {
+  display: flex;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding-right: 5px;
+  align-items: center;
+}

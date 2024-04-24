@@ -1,0 +1,22 @@
+@import 'src/shared/ui/variables.scss';
+
+$border-thickness: 2px;
+
+.root {
+  position: fixed;
+  top: 160px;
+  border-radius: 4px;
+  @include theme(border-color, main_color);
+  border: $border-thickness solid;
+  @include theme(background-color, main_bg);
+  width: $app_width - $border-thickness;
+
+  li {
+    font-family: sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    @include theme(color, main_color);
+    display: inline;
+    margin-right: 20px;
+  }
+}

@@ -1,0 +1,13 @@
+@import 'src/shared/ui/variables';
+
+.root {
+  margin: 5px;
+  padding: 0 5px 0 5px;
+  font-size: 16px;
+  @include theme(background-color, main_bg);
+  border-style: none;
+  appearance: none;
+  cursor: pointer;
+
+  @include theme(color, second_color);
+}

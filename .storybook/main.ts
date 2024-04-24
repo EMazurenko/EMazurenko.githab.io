@@ -1,3 +1,5 @@
+const path = require('path');
+
 const config = {
   stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
   addons: [
@@ -13,6 +15,10 @@ const config = {
   },
   docs: {
     autodocs: 'tag',
+  },
+  webpackFinal: async (config) => {
+    config.resolve.modules = [...(config.resolve.modules || []), path.resolve('./')];
+    return config;
   },
 };
 export default config;

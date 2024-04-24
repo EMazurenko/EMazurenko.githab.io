@@ -1,0 +1,44 @@
+$light: (
+  main_color: #a74e1b,
+  main_bg: white,
+  second_color: #7d2304,
+  button_bg: #f2ebde,
+  button_bg_hover: #f3efe9,
+  button_bg_active: #f6f5f5,
+  app_bg: #fdfbf5,
+  app_text: rgb(94, 54, 54),
+  layout_bg: rgb(249, 242, 232),
+  title_color: #d7a136,
+  header_box_shadow: 0px 8px 10px #a74e1b,
+  button_close: #aa0000,
+  button_close_hover: rgb(251, 137, 137),
+  button_close_active: rgb(206, 1, 1),
+  product_card_box_shadow: 0px 0px 12px #a74e1b,
+);
+
+$dark: (
+  main_color: #eed4c4,
+  main_bg: #dca281,
+  second_color: #f2ebde,
+  button_bg: #c26b3a,
+  button_bg_hover: #ce6f37,
+  button_bg_active: #e5a179,
+  app_bg: #eccbb8,
+  app_text: rgb(255, 246, 240),
+  layout_bg: #ecb79a,
+  title_color: #f5d8af,
+  header_box_shadow: 0px 8px 10px #eed4c4,
+  button_close: #aa0000,
+  button_close_hover: rgb(245, 178, 178),
+  button_close_active: rgb(206, 1, 1),
+  product_card_box_shadow: 0px 0px 12px #eed4c4,
+);
+
+@mixin theme($property, $var, $before: null, $after: null) {
+  @at-root html:global(.light) #{&} {
+    #{$property}: #{$before} #{map-get($light, $var)} #{$after};
+  }
+  @at-root html:global(.dark) #{&} {
+    #{$property}: #{$before} #{map-get($dark, $var)} #{$after};
+  }
+}

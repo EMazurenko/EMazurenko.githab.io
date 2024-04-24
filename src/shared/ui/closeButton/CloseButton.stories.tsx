@@ -2,7 +2,7 @@ import React from 'react';
 import { CloseButton, CloseButtonProps } from './CloseButton';
 
 export default {
-  title: 'UI/Close button',
+  title: 'UI Kit/Close button',
   component: CloseButton,
   argTypes: {
     size: {
@@ -19,18 +19,18 @@ export default {
 
 const Template = (args: CloseButtonProps) => <CloseButton {...args} />;
 
-const handlerClose = () => console.log('Click button close!');
+const handleClose = () => console.log('Click button close!');
 
 export const Small = Template.bind({});
 const smallArgs: CloseButtonProps = {
   size: 'small',
-  handlerClose,
+  onClose: handleClose,
 };
 Small.args = smallArgs;
 
 export const Large = Template.bind({});
 const largeArgs: CloseButtonProps = {
   size: 'large',
-  handlerClose,
+  onClose: handleClose,
 };
 Large.args = largeArgs;

@@ -1,0 +1,21 @@
+.root {
+  padding: 15px;
+  width: 300px;
+  border: 2px solid black;
+
+  * {
+    font-family: sans-serif;
+    width: 100%;
+    display: block;
+    margin-bottom: 5px;
+    box-sizing: border-box;
+  }
+
+  textarea {
+    height: 4em;
+  }
+
+  div {
+    margin-bottom: 10px;
+  }
+}
