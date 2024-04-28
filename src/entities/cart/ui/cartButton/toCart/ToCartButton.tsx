@@ -8,7 +8,7 @@ type ToCartButtonProps = Pick<CartButtonsProps, 'onAddItem'> & WithTranslation;
 const ToCartButton: FC<ToCartButtonProps> = ({ onAddItem, t }) => {
   return (
     <button className={s.cart_button} onClick={onAddItem}>
-      {t('cart.to')}
+      {t('cart.to', 'В корзину')}
     </button>
   );
 };

@@ -35,6 +35,9 @@ $dark: (
 );
 
 @mixin theme($property, $var, $before: null, $after: null) {
+  @at-root html:global() #{&} {
+    #{$property}: #{$before} #{map-get($light, $var)} #{$after};
+  }
   @at-root html:global(.light) #{&} {
     #{$property}: #{$before} #{map-get($light, $var)} #{$after};
   }

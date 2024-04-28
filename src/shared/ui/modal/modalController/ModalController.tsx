@@ -59,7 +59,7 @@ export const ModalController: FC = () => {
         <button type="submit">Показать модальное окно</button>
       </form>
       {state.needShow && (
-        <ModalWindow title={state.windowTitle} visible={true} onClose={handleClose}>
+        <ModalWindow title={state.windowTitle} onClose={handleClose}>
           {state.windowContent}
         </ModalWindow>
       )}

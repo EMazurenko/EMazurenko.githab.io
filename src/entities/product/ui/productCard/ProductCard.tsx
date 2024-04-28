@@ -1,12 +1,14 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { ShortProductCard } from './short/ShortProductCard';
 import { InCartProductCard } from './inCart/InCartProductCard';
 import { FullProductCard } from './full/FullProductCard';
 import photo_stub from './stub.png';
 import { ProductCardContainerProps } from './ProductCard.types';
 import s from './ProductCard.module.scss';
+import cn from 'clsx';
 
 export const ProductCard: FC<ProductCardContainerProps> = ({
+  className,
   type = 'Short',
   category = 'Категория',
   title = 'Продукт',
@@ -15,18 +17,12 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
   initCountItems = 1,
   photo_url = [photo_stub, photo_stub],
 }) => {
-  const [sum, setSum] = useState(price * initCountItems);
-
-  const changeSum = (newCountItems: number) => {
-    setSum(price * newCountItems);
-  };
-
   let productCard = null;
   switch (type) {
     case 'Short':
       productCard = (
         <ShortProductCard
-          className={s.root}
+          className={cn(s.root, className)}
           title={title}
           description={description}
           price={price}
@@ -39,12 +35,11 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
     case 'InCart':
       productCard = (
         <InCartProductCard
-          className={s.root}
+          className={cn(s.root, className)}
           title={title}
-          sum={sum}
+          price={price}
           initCountItems={initCountItems}
           photo_url={photo_url[0]}
-          onSetNewCountItem={changeSum}
         />
       );
       break;
@@ -52,7 +47,7 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
     case 'Full':
       productCard = (
         <FullProductCard
-          className={s.root}
+          className={cn(s.root, className)}
           category={category}
           title={title}
           description={description}

@@ -1,21 +1,28 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { CartButton } from 'src/entities/cart/ui/cartButton';
 import s from './InCartProductCard.module.scss';
 import photo_stub from '../stub.png';
 import { priceFormatter } from 'src/shared/utils/FormatUtils';
 import { ProductCardProps } from '../ProductCard.types';
+import cn from 'clsx';
 
-type InCartProductCardProps = Omit<ProductCardProps, 'price' | 'description'> & { sum: number };
+type InCartProductCardProps = Omit<ProductCardProps, 'description'>;
 
 export const InCartProductCard: FC<InCartProductCardProps> = ({
+  className,
   title = 'Продукт',
-  sum = 99.99,
+  price = 99.99,
   photo_url = photo_stub,
   initCountItems = 1,
-  onSetNewCountItem,
 }) => {
+  const [sum, setSum] = useState(price * initCountItems);
+
+  const handleSetNewCountItem = (newCountItems: number) => {
+    setSum(price * newCountItems);
+  };
+
   return (
-    <div className={s.root}>
+    <div className={cn(s.root, className)}>
       <img className={s.product_image} src={photo_url} alt="Фото товара" />
       <div className={s.text_continer}>
         <p className={s.title}>{title}</p>
@@ -26,7 +33,7 @@ export const InCartProductCard: FC<InCartProductCardProps> = ({
             size="medium"
             initCountItems={initCountItems}
             isFromCart={true}
-            onSetNewCountItem={onSetNewCountItem}
+            onSetNewCountItem={handleSetNewCountItem}
           />
         </span>
       </div>

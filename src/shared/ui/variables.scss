@@ -9,6 +9,11 @@ $second_color: #7d2304;
   height: $dimension;
 }
 
+@mixin cart_button_size($width) {
+  height: $width * 0.4;
+  width: $width;
+}
+
 @mixin button_style() {
   @include theme(color, second_color);
   @include theme(background-color, button_bg);
