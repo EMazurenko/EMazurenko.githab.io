@@ -5,7 +5,7 @@ const DELAY_MORE_MS = 2 * 1000;
 const useAppendProducts = (onMoreProducts: () => void) => {
   useEffect(() => {
     let needMore = false;
-    let isFirstRender = false;
+    let isFirstRender = true;
 
     const observerOptions: IntersectionObserverInit = {
       root: null,
@@ -13,8 +13,8 @@ const useAppendProducts = (onMoreProducts: () => void) => {
     };
 
     const observerCallback: IntersectionObserverCallback = () => {
-      if (!isFirstRender) {
-        isFirstRender = true;
+      if (isFirstRender) {
+        isFirstRender = false;
         return;
       }
       needMore = true;
