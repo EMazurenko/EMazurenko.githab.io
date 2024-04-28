@@ -43,7 +43,7 @@ export const createRandomProduct = (createdAt: string): Product => {
   };
   return {
     id: `product_${millis}`,
-    createdAt: createdAt,
+    createdAt,
     price: Math.ceil(Math.random() * 100),
     oldPrice: Math.random() > 0.5 ? Math.ceil(Math.random() * 100) : undefined,
     ...getCategoryDependentValues(),

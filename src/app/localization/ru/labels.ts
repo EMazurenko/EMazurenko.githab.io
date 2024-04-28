@@ -12,4 +12,7 @@ export const ruLabels = {
   cart: {
     to: 'В корзину',
   },
+  product: {
+    more: 'Показать ещё',
+  },
 };

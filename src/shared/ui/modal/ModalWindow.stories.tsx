@@ -5,10 +5,6 @@ export default {
   title: 'UI Kit/Modal window/Window',
   component: ModalWindow,
   argTypes: {
-    visible: {
-      type: 'boolean',
-      description: 'Признак видимости',
-    },
     children: {
       type: 'string',
       decription: 'Содержимое модального окна',
@@ -21,15 +17,14 @@ export default {
   },
 };
 
-const Template = ({ title, visible, children }: ModalWindowProps) => (
-  <ModalWindow title={title} visible={visible}>
+const Template = ({ title, children }: ModalWindowProps) => (
+  <ModalWindow title={title}>
     {children}
   </ModalWindow>
 );
 
 export const Default = Template.bind({});
 const defaultArgs: ModalWindowProps = {
-  visible: true,
   title: 'Modal window title',
   children: 'Modal window content',
 };

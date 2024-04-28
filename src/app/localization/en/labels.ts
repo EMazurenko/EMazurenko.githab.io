@@ -12,4 +12,7 @@ export const enLabels = {
   cart: {
     to: 'To cart',
   },
+  product: {
+    more: 'Show more',
+  },
 };

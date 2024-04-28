@@ -5,10 +5,12 @@ import s from './FullProductCard.module.scss';
 import photo_stub from '../stub.png';
 import { priceFormatter } from 'src/shared/utils/FormatUtils';
 import { ProductCardProps } from '../ProductCard.types';
+import cn from 'clsx';
 
-type FullProductCardProps = Omit<ProductCardProps, 'onSetNewCountItem'>;
+type FullProductCardProps = ProductCardProps;
 
 export const FullProductCard: FC<FullProductCardProps> = ({
+  className,
   category = 'Категория',
   title = 'Продукт',
   description = 'Описание',
@@ -17,7 +19,7 @@ export const FullProductCard: FC<FullProductCardProps> = ({
   initCountItems = 0,
 }) => {
   return (
-    <div className={s.root}>
+    <div className={cn(s.root, className)}>
       <div className={s.card_header}>
         <div>
           <ImageList images={[...photo_url]} />

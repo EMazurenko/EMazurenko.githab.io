@@ -4,10 +4,12 @@ import s from './ShortProductCard.module.scss';
 import photo_stub from '../stub.png';
 import { priceFormatter } from 'src/shared/utils/FormatUtils';
 import { ProductCardProps } from '../ProductCard.types';
+import cn from 'clsx';
 
-type ShortProductCardProps = Omit<ProductCardProps, 'onSetNewCountItem'>;
+type ShortProductCardProps = ProductCardProps;
 
 export const ShortProductCard: FC<ShortProductCardProps> = ({
+  className,
   title = 'Продукт',
   description = 'Описание',
   price = 99.99,
@@ -15,7 +17,7 @@ export const ShortProductCard: FC<ShortProductCardProps> = ({
   photo_url = photo_stub,
 }) => {
   return (
-    <div className={s.root}>
+    <div className={cn(s.root, className)}>
       <p className={s.title}>{title}</p>
       <img className={s.product_image} src={photo_url} alt="Фото товара" />
       <p className={s.description}>{description}</p>

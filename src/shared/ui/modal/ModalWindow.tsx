@@ -3,21 +3,30 @@ import cn from 'clsx';
 import { ModalHeader } from './modalHeader/ModalHeader';
 import { ModalContent } from './modalContent/ModalContent';
 import s from './ModalWindow.module.scss';
+import { createPortal } from 'react-dom';
 
 export type ModalWindowProps = {
   title: string;
-  visible: boolean;
   onClose?: () => void;
   children: string | ReactNode;
 };
 
-export const ModalWindow: FC<ModalWindowProps> = ({ title, visible, children, onClose }) => {
-  return (
-    <div className={cn(s.mask, !visible && s['hidden'])}>
+const modalRoot = document.body;
+
+export const ModalWindow: FC<ModalWindowProps> = ({ title, children, onClose }) => {
+  const handleCloseOnClickMask = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      onClose();
+    }
+  };
+
+  return createPortal(
+    <div className={cn(s.mask)} onClick={(event) => handleCloseOnClickMask(event)}>
       <div className={s.root}>
         <ModalHeader title={title} onClose={onClose} />
         <ModalContent>{children}</ModalContent>
       </div>
-    </div>
+    </div>,
+    modalRoot
   );
 };
