@@ -1,14 +1,15 @@
 import React, { FC, memo } from 'react';
-import { withTranslation, WithTranslation } from 'react-i18next';
+import { useTranslation } from 'react-i18next';
 import s from './MoreButton.module.scss';
 import useAppendProducts, { moreButtonId } from 'src/features/listProduct/model/useAppendProducts';
 
 type MoreButtonProps = {
   onMoreProducts: () => void;
-} & WithTranslation;
+};
 
-const MoreButton: FC<MoreButtonProps> = ({ onMoreProducts, t }) => {
+const MoreButton: FC<MoreButtonProps> = ({ onMoreProducts }) => {
   useAppendProducts(onMoreProducts);
+  const { t } = useTranslation();
 
   return (
     <button id={moreButtonId} className={s.root} onClick={onMoreProducts}>
@@ -17,4 +18,4 @@ const MoreButton: FC<MoreButtonProps> = ({ onMoreProducts, t }) => {
   );
 };
 
-export default withTranslation()(memo<MoreButtonProps>(MoreButton));
+export default memo<MoreButtonProps>(MoreButton);
