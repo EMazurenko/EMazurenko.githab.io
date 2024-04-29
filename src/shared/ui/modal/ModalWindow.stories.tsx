@@ -17,11 +17,7 @@ export default {
   },
 };
 
-const Template = ({ title, children }: ModalWindowProps) => (
-  <ModalWindow title={title}>
-    {children}
-  </ModalWindow>
-);
+const Template = ({ title, children }: ModalWindowProps) => <ModalWindow title={title}>{children}</ModalWindow>;
 
 export const Default = Template.bind({});
 const defaultArgs: ModalWindowProps = {

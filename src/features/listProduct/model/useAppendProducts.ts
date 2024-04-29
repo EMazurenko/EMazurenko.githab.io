@@ -5,22 +5,19 @@ const DELAY_MORE_MS = 2 * 1000;
 const useAppendProducts = (onMoreProducts: () => void) => {
   useEffect(() => {
     let needMore = false;
-    let isFirstRender = true;
 
     const observerOptions: IntersectionObserverInit = {
       root: null,
       threshold: 1,
     };
 
-    const observerCallback: IntersectionObserverCallback = () => {
-      if (isFirstRender) {
-        isFirstRender = false;
-        return;
+    const handleIntersect: IntersectionObserverCallback = (entries) => {
+      if (entries && entries[0].isIntersecting) {
+        needMore = true;
       }
-      needMore = true;
     };
 
-    const observer = new IntersectionObserver(observerCallback, observerOptions);
+    const observer = new IntersectionObserver(handleIntersect, observerOptions);
     const target = document.getElementById(moreButtonId);
     observer.observe(target);
 
@@ -31,7 +28,10 @@ const useAppendProducts = (onMoreProducts: () => void) => {
       }
     }, DELAY_MORE_MS);
 
-    return () => clearInterval(intervalId);
+    return () => {
+      clearInterval(intervalId);
+      observer.unobserve(target);
+    };
   }, [onMoreProducts]);
 };
 
