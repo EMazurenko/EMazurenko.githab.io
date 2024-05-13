@@ -1,11 +1,9 @@
 class Snowflake {
-  static readonly FALL_VELOCITY = 10; // Скорость падения в координатах в секунду
   private static readonly FLAKE_SIZES = [4, 5, 6];
   private readonly id: number;
   private readonly size: number;
   private xPos: number;
   private yPos: number;
-  private lastFallTimeMs: number;
 
   constructor(id: number) {
     this.id = id;
@@ -31,14 +29,6 @@ class Snowflake {
 
   get height() {
     return this.size;
-  }
-
-  fall(currentTimeMs: number) {
-    if (this.lastFallTimeMs) {
-      const deltaSeconds = (currentTimeMs - this.lastFallTimeMs) / 1000;
-      this.yPos += Math.round(Snowflake.FALL_VELOCITY * deltaSeconds);
-    }
-    this.lastFallTimeMs = currentTimeMs;
   }
 }
 
