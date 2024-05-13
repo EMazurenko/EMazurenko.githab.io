@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useRef, useState } from 'react';
+import React, { FC, memo, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import s from './Snowfall.module.scss';
 import { Snowflake } from 'src/shared/ui/snowfall/ui/Snowflake/Snowflake';
@@ -10,9 +10,9 @@ const SNOWFALL_CONTAINER_ID = 'snowfall';
 const SNOWFLAKE_POOL_SIZE = 10;
 const SNOWFLAKE_FALL_TIMEOUT = 1;
 
-type SnowfallProperties = React.HTMLAttributes<HTMLDivElement>;
+type SnowfallProps = React.HTMLAttributes<HTMLDivElement>;
 
-export const Snowfall = memo<SnowfallProperties>(({ style }) => {
+const Snowfall: FC<SnowfallProps> = ({ style }) => {
   const [snowflakes, setSnowflakes] = useState<SnowflakeModel[]>([]);
   const cloud = useRef<Cloud>(null);
 
@@ -48,4 +48,6 @@ export const Snowfall = memo<SnowfallProperties>(({ style }) => {
     </div>,
     body
   );
-});
+};
+
+export default memo<SnowfallProps>(Snowfall);

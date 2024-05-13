@@ -1,1 +1,1 @@
-export * from './ui/Snowfall';
+export { default } from './ui/Snowfall';

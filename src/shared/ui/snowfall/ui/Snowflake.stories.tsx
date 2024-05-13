@@ -1,5 +1,5 @@
 import React from 'react';
-import { Snowfall } from 'src/shared/ui/snowfall';
+import Snowfall from 'src/shared/ui/snowfall/ui/Snowfall';
 
 export default {
   title: 'UI Kit/Snowfall',
