@@ -1,0 +1,36 @@
+@import 'src/shared/ui/variables';
+
+$fall_line: 400px;
+$rotate_speed: 0.3;
+
+.root {
+  position: absolute;
+  animation-name: fall;
+  animation-iteration-count: 1;
+  animation-duration: 10s;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  20% {
+    transform: translateY(calc(1 / 5) * $fall_line) rotate(1 * $rotate_speed * 360deg);
+  }
+  40% {
+    transform: translateY(calc(2 / 5) * $fall_line) rotate(2 * $rotate_speed * 360deg);
+  }
+  60% {
+    transform: translateY(calc(3 / 5) * $fall_line) rotate(3 * $rotate_speed * 360deg);
+  }
+  80% {
+    transform: translateY(calc(4 / 5) * $fall_line) rotate(4 * $rotate_speed * 360deg);
+  }
+  100% {
+    transform: translateY($fall_line) rotate(5 * $rotate_speed * 360deg);
+    opacity: 0;
+  }
+}

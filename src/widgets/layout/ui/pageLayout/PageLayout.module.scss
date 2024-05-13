@@ -16,6 +16,7 @@ $content_position_top: 30vh;
 }
 
 .content {
+  z-index: 1;
   padding: 10px;
   position: relative;
   top: $content_position_top;
