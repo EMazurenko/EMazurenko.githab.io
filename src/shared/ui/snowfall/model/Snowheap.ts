@@ -1,4 +1,4 @@
-import Snowflake from "src/shared/ui/snowfall/model/Snowflake";
+import Snowflake from 'src/shared/ui/snowfall/model/Snowflake';
 
 export interface FallPlace {
   xPos: number;
@@ -16,8 +16,7 @@ class Snowheap {
 
   thaw() {
     for (const place of this.fallPlaces) {
-      if (this.baseline - place.height >= Snowheap.THAW_VELOCITY)
-        place.height -= Snowheap.THAW_VELOCITY;
+      if (this.baseline - place.height >= Snowheap.THAW_VELOCITY) place.height -= Snowheap.THAW_VELOCITY;
     }
   }
 
@@ -36,11 +35,10 @@ class Snowheap {
         return place;
       }
     }
-    const fallPlace = {xPos: xPos, height: this.baseline};
+    const fallPlace = { xPos: xPos, height: this.baseline };
     this.fallPlaces.push(fallPlace);
     return fallPlace;
   }
-
 }
 
 export default Snowheap;

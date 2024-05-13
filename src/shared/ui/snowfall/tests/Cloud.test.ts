@@ -1,4 +1,4 @@
-import Cloud from "src/shared/ui/snowfall/model/Cloud";
+import Cloud from 'src/shared/ui/snowfall/model/Cloud';
 
 describe('Cloud', () => {
   it('Should first not null for one-size pool', () => {

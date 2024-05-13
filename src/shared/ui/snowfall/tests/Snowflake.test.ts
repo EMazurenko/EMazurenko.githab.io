@@ -1,4 +1,4 @@
-import Snowflake from "src/shared/ui/snowfall/model/Snowflake";
+import Snowflake from 'src/shared/ui/snowfall/model/Snowflake';
 
 describe('Snowflake', () => {
   it('Should move with VELOCITY per second', () => {

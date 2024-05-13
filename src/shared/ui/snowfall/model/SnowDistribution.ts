@@ -12,7 +12,7 @@ class SnowDistribution {
   randomPos(): number {
     const r = this.calcRandomValue();
     return Math.round(
-        this.containsInFirstHalfInterval(r)
+      this.containsInFirstHalfInterval(r)
         ? (r - Math.ceil(SnowDistribution.NUM_DICE / 2)) * this.rateWidth + this.halfWidth
         : (r - Math.floor(SnowDistribution.NUM_DICE / 2)) * this.rateWidth - this.halfWidth
     );
@@ -21,15 +21,14 @@ class SnowDistribution {
   private calcRandomValue() {
     let randomValue = 0;
     for (let i = 0; i < SnowDistribution.NUM_DICE; i++) {
-        randomValue += Math.ceil(Math.random() * SnowDistribution.COUNT_FACE);
+      randomValue += Math.ceil(Math.random() * SnowDistribution.COUNT_FACE);
     }
     return randomValue;
   }
 
-  private containsInFirstHalfInterval(r:number) {
+  private containsInFirstHalfInterval(r: number) {
     return r < Math.ceil((SnowDistribution.NUM_DICE + SnowDistribution.NUM_DICE * SnowDistribution.COUNT_FACE) / 2);
   }
-
 }
 
 export default SnowDistribution;

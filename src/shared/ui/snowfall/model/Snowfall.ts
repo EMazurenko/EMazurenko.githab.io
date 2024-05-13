@@ -1,6 +1,7 @@
-import Snowflake from "src/shared/ui/snowfall/model/Snowflake";
-import Cloud from "src/shared/ui/snowfall/model/Cloud";
-import Snowheap from "src/shared/ui/snowfall/model/Snowheap";
+import Snowflake from 'src/shared/ui/snowfall/model/Snowflake';
+import Cloud from 'src/shared/ui/snowfall/model/Cloud';
+import Snowheap from 'src/shared/ui/snowfall/model/Snowheap';
+import Observer, { Listener } from 'src/shared/utils/Observer';
 
 class Snowfall {
   private static NEW_SNOWFLAKE_TIMEOUT = 1000 / 1.5;
@@ -14,9 +15,28 @@ class Snowfall {
   private lastNewSnowflakeMs: number;
   private lastThawSnowheapMs: number;
 
+  private snowflakesObserver: Observer<Snowflake[]> = new Observer<Snowflake[]>();
+  private snowheapObserver: Observer<Snowheap> = new Observer<Snowheap>();
+
   constructor(frontWidth: number, bottomLine: number) {
     this.cloud = new Cloud(Snowfall.SNOWFLAKE_COUNT, frontWidth);
     this.snowheap = new Snowheap(bottomLine);
+  }
+
+  addSnowflakesListener(listener: Listener<Snowflake[]>) {
+    this.snowflakesObserver.addListener(listener);
+  }
+
+  removeSnowflakesListener(listener: Listener<Snowflake[]>) {
+    this.snowflakesObserver.removeListener(listener);
+  }
+
+  addSnowheapListener(listener: Listener<Snowheap>) {
+    this.snowheapObserver.addListener(listener);
+  }
+
+  removeSnowheapListener(listener: Listener<Snowheap>) {
+    this.snowheapObserver.removeListener(listener);
   }
 
   loop() {
@@ -43,23 +63,25 @@ class Snowfall {
 
   private fallSnowflakes(currentTimeMs: number) {
     const refreshFallingSnowflakes: Snowflake[] = [];
-    for(const snowflake of this.fallingSnowflakes) {
+    for (const snowflake of this.fallingSnowflakes) {
       snowflake.fall(currentTimeMs);
       if (this.snowheap.isFallenSnowflake(snowflake)) {
         this.cloud.returnSnowflake(snowflake);
+        this.snowheapObserver.notify(this.snowheap);
       }
       refreshFallingSnowflakes.push(snowflake);
     }
     this.fallingSnowflakes = refreshFallingSnowflakes;
+    this.snowflakesObserver.notify(refreshFallingSnowflakes);
   }
 
   private thawSnowheap(currentTimeMs: number) {
     if (this.checkTimeout(currentTimeMs, this.lastThawSnowheapMs, Snowfall.THAW_SNOWHEAP_TIMEOUT)) {
       this.snowheap.thaw();
       this.lastThawSnowheapMs = currentTimeMs;
+      this.snowheapObserver.notify(this.snowheap);
     }
   }
-
 }
 
 export default Snowfall;

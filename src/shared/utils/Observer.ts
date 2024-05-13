@@ -1,4 +1,4 @@
-type Listener<T> = (observable: T) => void;
+export type Listener<T> = (observable: T) => void;
 
 class Observer<T> {
   private listeners: Listener<T>[] = [];
@@ -8,11 +8,11 @@ class Observer<T> {
   }
 
   removeListener(listener: Listener<T>) {
-    this.listeners = this.listeners.filter(lis => lis !== listener);
+    this.listeners = this.listeners.filter((lis) => lis !== listener);
   }
 
   notify(observable: T) {
-    this.listeners.forEach(list => list(observable));
+    this.listeners.forEach((list) => list(observable));
   }
 }
 

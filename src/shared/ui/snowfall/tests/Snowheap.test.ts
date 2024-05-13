@@ -1,5 +1,5 @@
-import Snowheap from "src/shared/ui/snowfall/model/Snowheap";
-import Snowflake from "src/shared/ui/snowfall/model/Snowflake";
+import Snowheap from 'src/shared/ui/snowfall/model/Snowheap';
+import Snowflake from 'src/shared/ui/snowfall/model/Snowflake';
 
 describe('Snowheap', () => {
   it('Should append fall place', () => {
@@ -29,13 +29,13 @@ describe('Snowheap', () => {
   it('Should snowheap thaw', () => {
     const baseline = 10;
     const snowheap = new Snowheap(baseline);
-    snowheap.fallPlaces.push({xPos: 1, height: 0})
-    snowheap.fallPlaces.push({xPos: 2, height: baseline - Snowheap.THAW_VELOCITY})
-    snowheap.fallPlaces.push({xPos: 3, height: baseline - 2 * Snowheap.THAW_VELOCITY})
+    snowheap.fallPlaces.push({ xPos: 1, height: 0 });
+    snowheap.fallPlaces.push({ xPos: 2, height: baseline - Snowheap.THAW_VELOCITY });
+    snowheap.fallPlaces.push({ xPos: 3, height: baseline - 2 * Snowheap.THAW_VELOCITY });
     snowheap.thaw();
 
-    expect(
-        snowheap.fallPlaces.reduce((sum, place) => sum += place.height, 0)
-    ).toBe(baseline - Snowheap.THAW_VELOCITY);
+    expect(snowheap.fallPlaces.reduce((sum, place) => (sum += place.height), 0)).toBe(
+      baseline - Snowheap.THAW_VELOCITY
+    );
   });
 });

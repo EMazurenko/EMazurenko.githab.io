@@ -1,5 +1,5 @@
-import Snowflake from "src/shared/ui/snowfall/model/Snowflake";
-import SnowDistribution from "src/shared/ui/snowfall/model/SnowDistribution";
+import Snowflake from 'src/shared/ui/snowfall/model/Snowflake';
+import SnowDistribution from 'src/shared/ui/snowfall/model/SnowDistribution';
 
 class Cloud {
   private readonly snowflakePool: Snowflake[];
@@ -8,7 +8,7 @@ class Cloud {
   constructor(poolSize: number, frontWidth: number) {
     this.distribution = new SnowDistribution(frontWidth);
     this.snowflakePool = new Array<Snowflake>(poolSize);
-    for(let i = 0; i< poolSize; i++) {
+    for (let i = 0; i < poolSize; i++) {
       this.snowflakePool[i] = new Snowflake(i);
     }
   }
@@ -26,7 +26,6 @@ class Cloud {
     snowflake.clear();
     this.snowflakePool.push(snowflake);
   }
-
 }
 
 export default Cloud;

@@ -1,4 +1,4 @@
-import Observer from "src/shared/utils/Observer";
+import Observer from 'src/shared/utils/Observer';
 
 describe('Observers', () => {
   it('Should call listener', () => {
@@ -8,7 +8,7 @@ describe('Observers', () => {
     const observer = new Observer<number>();
     const handleListen = (value: number) => {
       observableResult = value;
-    }
+    };
 
     observer.addListener(handleListen);
     observer.notify(observableTarget);
@@ -22,7 +22,7 @@ describe('Observers', () => {
     const observer = new Observer<number>();
     const handleListen = (value: number) => {
       observableResult = value;
-    }
+    };
 
     observer.addListener(handleListen);
     observer.removeListener(handleListen);

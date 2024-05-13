@@ -1,6 +1,6 @@
 class Snowflake {
   static readonly FALL_VELOCITY = 10; // Скорость падения в координатах в секунду
-  private static readonly FLAKE_SIZES = [4,6,8];
+  private static readonly FLAKE_SIZES = [4, 5, 6];
   private readonly id: number;
   private readonly size: number;
   private xPos: number;
@@ -22,7 +22,7 @@ class Snowflake {
   }
 
   get pos() {
-    return {x: this.xPos, y: this.yPos}
+    return { x: this.xPos, y: this.yPos };
   }
 
   get key() {
@@ -36,11 +36,10 @@ class Snowflake {
   fall(currentTimeMs: number) {
     if (this.lastFallTimeMs) {
       const deltaSeconds = (currentTimeMs - this.lastFallTimeMs) / 1000;
-      this.yPos += Math.round(Snowflake.FALL_VELOCITY * (deltaSeconds));
+      this.yPos += Math.round(Snowflake.FALL_VELOCITY * deltaSeconds);
     }
     this.lastFallTimeMs = currentTimeMs;
   }
-
 }
 
 export default Snowflake;
