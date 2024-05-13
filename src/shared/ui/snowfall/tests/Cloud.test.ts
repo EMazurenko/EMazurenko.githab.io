@@ -29,7 +29,7 @@ describe('Cloud', () => {
 
     cloud.returnSnowflake(firstSnowflake);
     const thirdSnowflake = cloud.getSnowflake();
-    expect(firstSnowflake).not.toBeNull();
+    expect(thirdSnowflake).not.toBeNull();
   });
 
   it('Should zero y-position after regetting from pool', () => {
