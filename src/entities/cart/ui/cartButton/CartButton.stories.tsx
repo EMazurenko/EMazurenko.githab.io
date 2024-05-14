@@ -1,6 +1,5 @@
 import React from 'react';
-import { CartButton } from './CartButton';
-import { CartButtonContainerProps } from './CartButton.types';
+import CartButton, { CartButtonProps } from './CartButton';
 
 export default {
   title: 'Cart/Cart button',
@@ -28,10 +27,10 @@ export default {
   },
 };
 
-const Template = (args: CartButtonContainerProps) => <CartButton {...args} />;
+const Template = (args: CartButtonProps) => <CartButton {...args} />;
 
 export const Medium = Template.bind({});
-const mediumArgs: CartButtonContainerProps = {
+const mediumArgs: CartButtonProps = {
   size: 'medium',
   isFromCart: false,
   initCountItems: 0,
@@ -39,7 +38,7 @@ const mediumArgs: CartButtonContainerProps = {
 Medium.args = mediumArgs;
 
 export const Large = Template.bind({});
-const largeArgs: CartButtonContainerProps = {
+const largeArgs: CartButtonProps = {
   size: 'large',
   isFromCart: false,
   initCountItems: 0,
@@ -47,7 +46,7 @@ const largeArgs: CartButtonContainerProps = {
 Large.args = largeArgs;
 
 export const FromCart = Template.bind({});
-const fromCartArgs = {
+const fromCartArgs: CartButtonProps = {
   size: 'medium',
   isFromCart: true,
   initCountItems: 1,

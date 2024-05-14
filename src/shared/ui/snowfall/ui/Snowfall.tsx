@@ -1,7 +1,7 @@
 import React, { FC, memo, useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import s from './Snowfall.module.scss';
-import { Snowflake } from 'src/shared/ui/snowfall/ui/Snowflake/Snowflake';
+import { Snowflake } from 'src/shared/ui/snowfall/ui/snowflake/Snowflake';
 import { default as SnowflakeModel } from 'src/shared/ui/snowfall/model/Snowflake';
 import Cloud from 'src/shared/ui/snowfall/model/Cloud';
 

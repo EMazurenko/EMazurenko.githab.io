@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { SnowflakeIcon } from 'src/shared/ui/snowfall/ui/Snowflake/SnowflakeIcon';
+import { SnowflakeIcon } from 'src/shared/ui/snowfall/ui/snowflake/SnowflakeIcon';
 import s from './Snowflake.module.scss';
 
 const BASE_SIZE_PX = 5;
