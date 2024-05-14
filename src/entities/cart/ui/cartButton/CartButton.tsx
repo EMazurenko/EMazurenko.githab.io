@@ -1,17 +1,23 @@
 import React, { FC, useState } from 'react';
+import { withTranslation, WithTranslation } from 'react-i18next';
 import cn from 'clsx';
 import s from './CartButton.module.scss';
 import ToCartButton from './toCart/ToCartButton';
 import { InCartButtons } from './inCart/InCartButtons';
 import { FromCartButton } from './fromCart/FromCartButton';
 import { CartButtonContainerProps } from './CartButton.types';
+import { CauseTooltip, withTooltip } from 'src/shared/ui/withTooltip/withTooltip';
 
-export const CartButton: FC<CartButtonContainerProps> = ({
+export type CartButtonProps = CartButtonContainerProps & CauseTooltip & Partial<WithTranslation>;
+
+const CartButton: FC<CartButtonProps> = ({
   size = 'medium',
   isFromCart = false,
   initCountItems = 0,
   className,
   onSetNewCountItem,
+  onCauseTooltip,
+  t,
 }) => {
   const MAX_COUNT_ITEMS = 99;
   const [countItems, setCountItems] = useState(initCountItems);
@@ -21,6 +27,8 @@ export const CartButton: FC<CartButtonContainerProps> = ({
       const newCountItems = countItems + 1;
       setCountItems(newCountItems);
       onSetNewCountItem && onSetNewCountItem(newCountItems);
+    } else {
+      onCauseTooltip && onCauseTooltip(t('cart_button.to_many_items', 'Количество товара должно быть меньше 100'));
     }
   };
 
@@ -35,11 +43,16 @@ export const CartButton: FC<CartButtonContainerProps> = ({
     if (isCorrectCount(newCountItems, countItems)) {
       setCountItems(newCountItems);
       onSetNewCountItem && onSetNewCountItem(newCountItems);
+    } else {
+      onCauseTooltip &&
+        onCauseTooltip(
+          t('cart_button.invalid_item_count', 'Необходимо указать количество товара больше 0 и меньше 100')
+        );
     }
   };
 
   const isCorrectCount = (newCountValue: number, currentCountValue: number) =>
-    newCountValue >= 0 && newCountValue < 100 && newCountValue != currentCountValue;
+    newCountValue >= 0 && newCountValue <= MAX_COUNT_ITEMS && newCountValue != currentCountValue;
 
   const toCartButton = <ToCartButton onAddItem={handleIncreaseCountItems} />;
 
@@ -67,3 +80,5 @@ export const CartButton: FC<CartButtonContainerProps> = ({
     </div>
   );
 };
+
+export default withTranslation('tooltips')(withTooltip<CartButtonProps>(CartButton));

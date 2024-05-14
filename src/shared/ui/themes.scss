@@ -14,6 +14,8 @@ $light: (
   button_close_hover: rgb(251, 137, 137),
   button_close_active: rgb(206, 1, 1),
   product_card_box_shadow: 0px 0px 12px #a74e1b,
+  tooltip_background: linear-gradient(#f6f5f5, #f2ebde),
+  tooltip_box_shadow: 0px 4px 5px #a74e1b,
 );
 
 $dark: (
@@ -32,6 +34,8 @@ $dark: (
   button_close_hover: rgb(245, 178, 178),
   button_close_active: rgb(206, 1, 1),
   product_card_box_shadow: 0px 0px 12px #eed4c4,
+  tooltip_background: linear-gradient(#e5a179, #c26b3a),
+  tooltip_box_shadow: 0px 4px 5px #eed4c4,
 );
 
 @mixin theme($property, $var, $before: null, $after: null) {
