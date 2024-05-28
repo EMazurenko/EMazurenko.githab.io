@@ -1,0 +1,23 @@
+@import 'src/shared/ui/variables';
+
+.root {
+  width: 100%;
+  margin-top: 4px;
+
+  button {
+    @include button_style();
+    border-radius: 5px;
+    padding: 8px;
+    padding-inline-start: 5px;
+    font-family: sans-serif;
+    font-size: 16px;
+
+    &:hover {
+      @include button_style_hover();
+    }
+
+    &:active {
+      @include button_style_active();
+    }
+  }
+}
