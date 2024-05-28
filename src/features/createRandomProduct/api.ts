@@ -1,18 +1,5 @@
-import { Category } from 'src/entities/category/model/types';
 import { Product } from 'src/entities/product/model/types';
-
-const CATEGORIES: Category[] = [
-  { id: '1', name: 'cat_1', photo: 'file://photo_cat_1' },
-  { id: '2', name: 'cat_2' },
-  { id: '3', name: 'cat_3', photo: 'file://photo_cat_3' },
-  { id: '4', name: 'cat_4' },
-  { id: '5', name: 'cat_5', photo: 'file://photo_cat_5' },
-  { id: '6', name: 'cat_6' },
-  { id: '7', name: 'cat_7' },
-  { id: '8', name: 'cat_8' },
-  { id: '9', name: 'cat_9' },
-  { id: '10', name: 'cat_10' },
-];
+import Categories from 'src/features/storeProduct/model/Categories';
 
 const PRODUCTS_BY_CATEGORY = new Map<string, string[]>([
   ['cat_1', ['product_1_1', 'product_1_2', 'product_1_3']],
@@ -34,7 +21,7 @@ const PRODUCTS_BY_CATEGORY = new Map<string, string[]>([
 export const createRandomProduct = (createdAt: string): Product => {
   const millis = Date.now().toString();
   const getCategoryDependentValues = () => {
-    const category = CATEGORIES[Math.floor(Math.random() * CATEGORIES.length)];
+    const category = Categories[Math.floor(Math.random() * Categories.length)];
     const categoryProducts = PRODUCTS_BY_CATEGORY.get(category.name);
     const product = categoryProducts[Math.floor(Math.random() * categoryProducts.length)];
     const photo = `file://photo_${product}_${millis}`;

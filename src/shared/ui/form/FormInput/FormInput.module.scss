@@ -1,0 +1,38 @@
+@import 'src/shared/ui/variables';
+
+$textarea_height: 64px;
+
+.root {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  font-size: 16px;
+  font-family: sans-serif;
+  border: none;
+  @include theme(color, second_color);
+  @include theme(background-color, input_bg);
+
+  &:focus-visible {
+    @include theme(outline-color, second_color);
+  }
+
+  &::placeholder {
+    @include theme(color, input_placeholder_color);
+  }
+}
+
+.textarea_style {
+  resize: vertical;
+  height: $textarea_height;
+  min-height: $textarea_height;
+}
+
+.input_style {
+  height: 25px;
+}
+
+.select_style {
+  border-style: none;
+  cursor: pointer;
+}

@@ -1,0 +1,20 @@
+@import 'src/shared/ui/variables';
+
+.root {
+  padding: 5px;
+  border-radius: 8px;
+  @include theme(background-color, form_bg);
+
+  & fieldset {
+    border-radius: 8px;
+    @include theme(border-color, layout_bg);
+  }
+
+  & legend {
+    font-family: sans-serif;
+    font-weight: bold;
+    letter-spacing: 0.04em;
+    @include theme(color, main_color);
+    margin-bottom: 10px;
+  }
+}

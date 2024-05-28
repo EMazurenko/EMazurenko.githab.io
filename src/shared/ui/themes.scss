@@ -16,6 +16,10 @@ $light: (
   product_card_box_shadow: 0px 0px 12px #a74e1b,
   tooltip_background: linear-gradient(#f6f5f5, #f2ebde),
   tooltip_box_shadow: 0px 4px 5px #a74e1b,
+  validation_alert_color: rgb(206, 1, 1),
+  form_bg: #fdfbf5,
+  input_placeholder_color: #c6aca3,
+  input_bg: white,
 );
 
 $dark: (
@@ -36,6 +40,10 @@ $dark: (
   product_card_box_shadow: 0px 0px 12px #eed4c4,
   tooltip_background: linear-gradient(#e5a179, #c26b3a),
   tooltip_box_shadow: 0px 4px 5px #eed4c4,
+  validation_alert_color: rgb(206, 1, 1),
+  form_bg: #eccbb8,
+  input_placeholder_color: #c6aca3,
+  input_bg: #eccbb8,
 );
 
 @mixin theme($property, $var, $before: null, $after: null) {
