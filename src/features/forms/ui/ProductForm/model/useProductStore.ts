@@ -15,7 +15,7 @@ const getOrInitProduct = (productId: string) => {
       category: defaultCategory,
     };
   }
-  console.log('get: ' + JSON.stringify(product));
+
   return product;
 };
 
@@ -24,7 +24,6 @@ const updateProduct = (product: Product) => {
   product.id = product.id || `product_${nowMs}`;
   product.createdAt = product.createdAt || nowMs;
 
-  console.log('save: ' + JSON.stringify(product));
   ProductStore.save(product);
 };
 
