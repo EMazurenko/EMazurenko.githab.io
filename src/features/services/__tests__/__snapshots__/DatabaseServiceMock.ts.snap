@@ -1,0 +1,87 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DatabaseServiceMock should account discounts equals snapshot 1`] = `
+[
+  {
+    "type": 0,
+    "value": 0,
+  },
+  {
+    "type": 1,
+    "value": 30,
+  },
+  {
+    "type": 2,
+    "value": 70,
+  },
+  {
+    "type": 3,
+    "value": 100,
+  },
+]
+`;
+
+exports[`DatabaseServiceMock should category and account discounts equals snapshot 1`] = `
+[
+  {
+    "accType": 0,
+    "catId": "1",
+    "value": 0,
+  },
+  {
+    "accType": 1,
+    "catId": "1",
+    "value": 0,
+  },
+  {
+    "accType": 2,
+    "catId": "1",
+    "value": 40,
+  },
+  {
+    "accType": 3,
+    "catId": "1",
+    "value": 0,
+  },
+  {
+    "accType": 0,
+    "catId": "2",
+    "value": 10,
+  },
+  {
+    "accType": 1,
+    "catId": "2",
+    "value": 10,
+  },
+  {
+    "accType": 2,
+    "catId": "2",
+    "value": 30,
+  },
+  {
+    "accType": 3,
+    "catId": "2",
+    "value": 0,
+  },
+  {
+    "accType": 0,
+    "catId": "3",
+    "value": 15,
+  },
+  {
+    "accType": 1,
+    "catId": "3",
+    "value": 10,
+  },
+  {
+    "accType": 2,
+    "catId": "3",
+    "value": 20,
+  },
+  {
+    "accType": 3,
+    "catId": "3",
+    "value": 0,
+  },
+]
+`;
