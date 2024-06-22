@@ -1,0 +1,18 @@
+@import 'src/shared/ui/variables.scss';
+@import 'src/shared/ui/themes.scss';
+
+.root {
+  display: inline;
+  height: 100%;
+  width: 100%;
+
+  @include theme(color, main_color);
+
+  &:active {
+    @include theme(color, second_color);
+  }
+
+  &.active {
+    @include theme(color, second_color);
+  }
+}

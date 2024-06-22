@@ -77,4 +77,16 @@ export const enForms = {
       },
     },
   },
+  productManagement: {
+    title: 'Creation/Editing products',
+    inputs: {
+      productId: {
+        label: 'Product',
+      },
+    },
+    buttons: {
+      add: 'Add product',
+      edit: 'Edit product',
+    },
+  },
 };

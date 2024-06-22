@@ -1,0 +1,17 @@
+@import 'src/shared/ui/variables';
+
+.root {
+  margin: 0 auto;
+  font-size: 18px;
+  border-radius: 5px;
+  @include cart_button_size(120px);
+  @include button_style();
+
+  &:hover {
+    @include button_style_hover();
+  }
+
+  &:active {
+    @include button_style_active();
+  }
+}

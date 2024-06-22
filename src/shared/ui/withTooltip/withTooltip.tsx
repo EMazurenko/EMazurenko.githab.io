@@ -1,4 +1,4 @@
-import React, { Component, FC, useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import React, { Component, FC, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
 import TooltipContainer, { TOOLTIP_WIDTH } from 'src/shared/ui/withTooltip/tooltipContainer/TooltipContainer';
 import { Pos } from 'src/shared/model/types';
 
@@ -22,7 +22,7 @@ export function withTooltip<T extends CauseTooltip>(Component: FC<T>) {
       setVisibleTooltip(false);
     };
 
-    useEffect(() => {
+    useLayoutEffect(() => {
       const calcPosition = () => {
         const parent = componentRef.current.getBoundingClientRect();
         setPos({
@@ -30,8 +30,6 @@ export function withTooltip<T extends CauseTooltip>(Component: FC<T>) {
           left: Math.max(0, parent.left + (parent.width - TOOLTIP_WIDTH) / 2),
         });
       };
-
-      calcPosition();
 
       const resizeObserver = new ResizeObserver(() => {
         calcPosition();

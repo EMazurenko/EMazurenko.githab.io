@@ -3,11 +3,10 @@ export const enLabels = {
     demo: 'Electronic sale store',
     hello: "Mazurenko Evgenyi's card",
   },
-  header: 'Electronic sale store<br/><i>E-Market</i>',
+  header: 'Electronic sale store <i>E-Market</i>',
   section: {
-    section1: 'Section 1',
-    section2: 'Section 2',
-    section3: 'Section 3',
+    products: 'Products',
+    warehouse: 'Product management',
   },
   cart: {
     to: 'To cart',

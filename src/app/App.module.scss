@@ -1,7 +1,6 @@
 @import 'src/shared/ui/variables.scss';
 
 .App {
-  padding: 15px;
   min-height: 100vh;
   text-align: left;
   @include theme(background-color, app_bg);

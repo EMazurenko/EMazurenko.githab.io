@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
+import cn from 'clsx';
 import { FormContainer, FormButton, FormInput, FormInputsTypes } from 'src/shared/ui/form';
 import s from './ProfileForm.module.scss';
 import { withTranslation, WithTranslation } from 'react-i18next';
@@ -9,9 +10,9 @@ type ProfileFormValues = {
   about: string;
 };
 
-type ProfileFormType = WithTranslation;
+type ProfileFormType = { classname?: string } & WithTranslation;
 
-const ProfileForm: FC<ProfileFormType> = ({ t }) => {
+const ProfileForm: FC<ProfileFormType> = ({ t, classname }) => {
   const {
     register,
     handleSubmit,
@@ -28,7 +29,7 @@ const ProfileForm: FC<ProfileFormType> = ({ t }) => {
 
   return (
     <FormContainer
-      className={s.root}
+      className={cn(s.root, classname)}
       onSubmit={handleSubmit(handleClick)}
       title={t('profile.title', 'Изменение профиля')}
     >

@@ -1,5 +1,6 @@
 import { Product } from 'src/entities/product/model/types';
 import Categories from 'src/features/storeProduct/model/Categories';
+import photo_stub from 'src/entities/product/ui/productCard/stub.png';
 
 const PRODUCTS_BY_CATEGORY = new Map<string, string[]>([
   ['cat_1', ['product_1_1', 'product_1_2', 'product_1_3']],
@@ -24,7 +25,7 @@ export const createRandomProduct = (createdAt: string): Product => {
     const category = Categories[Math.floor(Math.random() * Categories.length)];
     const categoryProducts = PRODUCTS_BY_CATEGORY.get(category.name);
     const product = categoryProducts[Math.floor(Math.random() * categoryProducts.length)];
-    const photo = `file://photo_${product}_${millis}`;
+    const photo = photo_stub;
     const desc = Math.random() < 0.3 ? `Description of a product "${product}"...` : undefined;
     return { category, name: product, photo, desc };
   };
@@ -35,4 +36,10 @@ export const createRandomProduct = (createdAt: string): Product => {
     oldPrice: Math.random() > 0.5 ? Math.ceil(Math.random() * 100) : undefined,
     ...getCategoryDependentValues(),
   };
+};
+
+export const createProductForId = (baseId: string): Product => {
+  const product = createRandomProduct(Date.now().toString());
+  product.id = baseId + '_' + product.id;
+  return product;
 };

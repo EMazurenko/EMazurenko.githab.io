@@ -9,5 +9,6 @@ export type ProductCardProps = {
   description: string;
   price: number;
   initCountItems: number;
+  onChangeCountItems?: (count: number) => void;
   photo_url: string | string[];
 };

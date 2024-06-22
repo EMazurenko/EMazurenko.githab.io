@@ -20,9 +20,10 @@ type ProductFormValues = {
 
 type ProductFormProps = {
   productId?: string;
+  onSubmit?: () => void;
 } & WithTranslation;
 
-const ProductForm: FC<ProductFormProps> = ({ t, productId }) => {
+const ProductForm: FC<ProductFormProps> = ({ t, productId, onSubmit }) => {
   const { mode } = useProductFormMode(t, productId);
   const { initProduct, getProduct, saveProduct, findCategory, getCategoryOptions } = useProductStore(productId);
   const {
@@ -53,6 +54,7 @@ const ProductForm: FC<ProductFormProps> = ({ t, productId }) => {
     reset(undefined, {
       keepDirtyValues: mode.isEdit,
     });
+    onSubmit && onSubmit();
   };
 
   return (

@@ -1,12 +1,10 @@
 @import 'src/shared/ui/variables.scss';
 
-$layout_height: 200vh;
-$content_position_top: 30vh;
+$content_position_top: 250px;
 
 .root {
   margin: 0px auto;
   @include theme(background-color, layout_bg);
-  height: $layout_height;
   width: $app_width;
 }
 
@@ -17,7 +15,5 @@ $content_position_top: 30vh;
 
 .content {
   z-index: 1;
-  padding: 10px;
-  position: relative;
-  top: $content_position_top;
+  padding: $content_position_top 10px 10px 10px;
 }

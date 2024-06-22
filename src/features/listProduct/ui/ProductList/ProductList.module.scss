@@ -1,0 +1,12 @@
+@import 'src/shared/ui/variables';
+
+.root {
+  display: grid;
+  grid-template-columns: auto;
+  justify-content: left;
+}
+
+.card {
+  margin-bottom: 15px;
+  width: calc($app-width / 1.5);
+}

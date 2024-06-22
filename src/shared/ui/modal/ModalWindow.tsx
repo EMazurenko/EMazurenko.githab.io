@@ -21,7 +21,7 @@ export const ModalWindow: FC<ModalWindowProps> = ({ title, children, onClose }) 
   };
 
   return createPortal(
-    <div className={cn(s.mask)} onClick={(event) => handleCloseOnClickMask(event)}>
+    <div className={cn(s.mask)} onMouseDown={(event) => handleCloseOnClickMask(event)}>
       <div className={s.root}>
         <ModalHeader title={title} onClose={onClose} />
         <ModalContent>{children}</ModalContent>

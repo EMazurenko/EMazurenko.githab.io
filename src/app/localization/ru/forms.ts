@@ -77,4 +77,16 @@ export const ruForms = {
       },
     },
   },
+  productManagement: {
+    title: 'Добавление/Редактирование товаров',
+    inputs: {
+      productId: {
+        label: 'Продукт',
+      },
+    },
+    buttons: {
+      add: 'Добавить продукт',
+      edit: 'Редактировать продукт',
+    },
+  },
 };
