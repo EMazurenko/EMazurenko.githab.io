@@ -1,12 +1,5 @@
 import React from 'react';
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Outlet,
-  Route,
-  RouterProvider,
-  Navigate,
-} from 'react-router-dom';
+import { createHashRouter, createRoutesFromElements, Outlet, Route, RouterProvider, Navigate } from 'react-router-dom';
 import { Hello } from 'src/pages/hello/ui';
 import { PageLayout } from 'src/widgets/layout/ui';
 import { Profile } from 'src/pages/profile/ui';
@@ -17,7 +10,7 @@ import { NotFound } from 'src/pages/notFound/ui';
 import AddProductModal from 'src/features/managementProduct/ui/AddProductModal';
 import { EditProductModal } from 'src/features/managementProduct/ui';
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Outlet />}>
       <Route path="/" element={<PageLayout />}>
