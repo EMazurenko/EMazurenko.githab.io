@@ -8,7 +8,7 @@ export type CartButtonContainerProps = {
   onSetNewCountItem?: (newCountItems: number) => void;
 };
 
-export type CartButtonsProps = {
+export type CartButtonsItemProps = {
   countItems: number;
   onAddItem: () => void;
   onRemoveItem: () => void;

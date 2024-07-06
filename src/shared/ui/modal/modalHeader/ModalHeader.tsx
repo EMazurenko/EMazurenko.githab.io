@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { CloseButton } from '../../closeButton/CloseButton';
+import { CloseButton } from '../../button/closeButton/CloseButton';
 import s from './ModalHeader.module.scss';
 
 export type ModalHeaderProps = {

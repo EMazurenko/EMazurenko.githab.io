@@ -1,0 +1,10 @@
+@import 'src/shared/ui/variables';
+
+.root {
+  display: grid;
+}
+
+.product_list {
+  grid-template-columns: auto auto auto;
+  justify-content: center;
+}

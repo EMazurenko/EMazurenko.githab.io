@@ -6,4 +6,8 @@ export const enErrors = {
     passwordMismatch: 'Password mismatch',
     positiveValue: 'Value must be positive',
   },
+  modals: {
+    productNotExists: 'Product "{productId}" not exists',
+  },
+  pageNotFound: 'Page <i>{{path}}</i> not found.',
 };

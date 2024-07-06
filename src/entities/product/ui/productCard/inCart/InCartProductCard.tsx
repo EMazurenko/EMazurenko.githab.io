@@ -14,11 +14,13 @@ export const InCartProductCard: FC<InCartProductCardProps> = ({
   price = 99.99,
   photo_url = photo_stub,
   initCountItems = 1,
+  onChangeCountItems,
 }) => {
   const [sum, setSum] = useState(price * initCountItems);
 
   const handleSetNewCountItem = (newCountItems: number) => {
     setSum(price * newCountItems);
+    onChangeCountItems && onChangeCountItems(newCountItems);
   };
 
   return (

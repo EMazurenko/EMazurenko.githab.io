@@ -1,13 +1,13 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
+import { Outlet } from 'react-router-dom';
 import PageHeader from '../pageHeader/PageHeader';
 import PageNavigation from '../pageNavigation/PageNavigation';
 import s from './PageLayout.module.scss';
+import useChangePageTitle from 'src/features/changePageTitle/model/useChangePageTitle';
 
-type PageLayoutProps = {
-  children?: ReactNode | ReactNode[];
-};
+export const PageLayout: FC = () => {
+  useChangePageTitle('titlePage.demo');
 
-export const PageLayout: FC<PageLayoutProps> = ({ children }) => {
   return (
     <>
       <div className={s.root}>
@@ -15,7 +15,9 @@ export const PageLayout: FC<PageLayoutProps> = ({ children }) => {
           <PageHeader />
           <PageNavigation />
         </div>
-        <div className={s.content}>{children}</div>
+        <div className={s.content}>
+          <Outlet />
+        </div>
       </div>
     </>
   );

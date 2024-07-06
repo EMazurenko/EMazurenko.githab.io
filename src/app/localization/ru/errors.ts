@@ -6,4 +6,8 @@ export const ruErrors = {
     passwordMismatch: 'Пароли не совпадают',
     positiveValue: 'Значение должно быть положительным',
   },
+  modals: {
+    productNotExists: 'Продукт "{productId}" не существует',
+  },
+  pageNotFound: 'Страница <i>{{path}}</i> не найдена.',
 };

@@ -3,11 +3,10 @@ export const ruLabels = {
     demo: 'Магазин электронных распродаж',
     hello: 'Карточка Мазуренко Евгения',
   },
-  header: 'Магазин электронных распродаж <i>E-Market</i>',
+  header: 'Магазин электронных распродаж <br/><i>E-Market</i>',
   section: {
-    section1: 'Раздел 1',
-    section2: 'Раздел 2',
-    section3: 'Раздел 3',
+    products: 'Товары',
+    warehouse: 'Управление товарами',
   },
   cart: {
     to: 'В корзину',

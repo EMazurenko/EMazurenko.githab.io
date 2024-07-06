@@ -1,2 +1,2 @@
 export * from './Categories';
-export * from './ProductStore';
+export { default as ProductStore } from './ProductStore';

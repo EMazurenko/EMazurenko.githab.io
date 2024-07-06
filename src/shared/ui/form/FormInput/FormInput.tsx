@@ -13,7 +13,7 @@ export enum FormInputsTypes {
   select,
 }
 
-export type FormSelectOptionType = {
+type FormSelectOptionType = {
   value: string;
   text: string;
 };

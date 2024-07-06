@@ -17,6 +17,7 @@ export const FullProductCard: FC<FullProductCardProps> = ({
   price = 99.99,
   photo_url = [photo_stub, photo_stub],
   initCountItems = 0,
+  onChangeCountItems,
 }) => {
   return (
     <div className={cn(s.root, className)}>
@@ -27,7 +28,7 @@ export const FullProductCard: FC<FullProductCardProps> = ({
         <div className={s.info_block}>
           <div className={s.cart_panel}>
             <span className={s.price}>{priceFormatter.format(price)}</span>
-            <CartButton size="large" initCountItems={initCountItems} />
+            <CartButton size="large" initCountItems={initCountItems} onSetNewCountItem={onChangeCountItems} />
           </div>
           <p className={s.category}>{category}</p>
           <p className={s.title}>{title}</p>

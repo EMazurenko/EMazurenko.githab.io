@@ -3,20 +3,34 @@
 $border-thickness: 2px;
 
 .root {
+  display: flex;
   position: fixed;
+  box-sizing: border-box;
   top: 160px;
   border-radius: 4px;
   @include theme(border-color, main_color);
   border: $border-thickness solid;
   @include theme(background-color, main_bg);
   width: $app_width - $border-thickness;
+  align-items: center;
+  padding: 0 10px;
 
-  li {
-    font-family: sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.03em;
-    @include theme(color, main_color);
-    display: inline;
-    margin-right: 20px;
+  ul {
+    display: inline-block;
+    width: 80%;
+    li {
+      font-family: sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      @include theme(color, main_color);
+      display: inline-block;
+      margin-right: 20px;
+    }
+  }
+
+  .cart {
+    display: flex;
+    justify-content: right;
+    width: 20%;
   }
 }

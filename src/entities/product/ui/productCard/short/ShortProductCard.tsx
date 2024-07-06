@@ -14,6 +14,7 @@ export const ShortProductCard: FC<ShortProductCardProps> = ({
   description = 'Описание',
   price = 99.99,
   initCountItems = 0,
+  onChangeCountItems,
   photo_url = photo_stub,
 }) => {
   return (
@@ -23,7 +24,12 @@ export const ShortProductCard: FC<ShortProductCardProps> = ({
       <p className={s.description}>{description}</p>
       <div className={s.card_footer}>
         <span className={s.price}>{priceFormatter.format(price)}</span>
-        <CartButton className={s.cart_button} size="medium" initCountItems={initCountItems} />
+        <CartButton
+          className={s.cart_button}
+          size="medium"
+          initCountItems={initCountItems}
+          onSetNewCountItem={onChangeCountItems}
+        />
       </div>
     </div>
   );

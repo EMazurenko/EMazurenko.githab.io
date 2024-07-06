@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, memo } from 'react';
 import { ShortProductCard } from './short/ShortProductCard';
 import { InCartProductCard } from './inCart/InCartProductCard';
 import { FullProductCard } from './full/FullProductCard';
@@ -7,7 +7,7 @@ import { ProductCardContainerProps } from './ProductCard.types';
 import s from './ProductCard.module.scss';
 import cn from 'clsx';
 
-export const ProductCard: FC<ProductCardContainerProps> = ({
+const ProductCard: FC<ProductCardContainerProps> = ({
   className,
   type = 'Short',
   category = 'Категория',
@@ -15,6 +15,7 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
   description = 'Описание',
   price = 99.99,
   initCountItems = 1,
+  onChangeCountItems = (count: number) => {},
   photo_url = [photo_stub, photo_stub],
 }) => {
   let productCard = null;
@@ -27,6 +28,7 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
           description={description}
           price={price}
           initCountItems={initCountItems}
+          onChangeCountItems={onChangeCountItems}
           photo_url={photo_url[0]}
         />
       );
@@ -39,6 +41,7 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
           title={title}
           price={price}
           initCountItems={initCountItems}
+          onChangeCountItems={onChangeCountItems}
           photo_url={photo_url[0]}
         />
       );
@@ -53,6 +56,7 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
           description={description}
           price={price}
           initCountItems={initCountItems}
+          onChangeCountItems={onChangeCountItems}
           photo_url={photo_url}
         />
       );
@@ -60,3 +64,5 @@ export const ProductCard: FC<ProductCardContainerProps> = ({
   }
   return <>{productCard}</>;
 };
+
+export default memo<ProductCardContainerProps>(ProductCard);

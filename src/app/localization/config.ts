@@ -9,6 +9,8 @@ import { ruForms } from 'src/app/localization/ru/forms';
 import { enForms } from 'src/app/localization/en/forms';
 import { ruErrors } from 'src/app/localization/ru/errors';
 import { enErrors } from 'src/app/localization/en/errors';
+import { ruModals } from 'src/app/localization/ru/modals';
+import { enModals } from 'src/app/localization/en/modals';
 
 export const supportedLngs = ['ru', 'en'];
 
@@ -18,12 +20,14 @@ const resources = {
     tooltips: ruTooltips,
     forms: ruForms,
     errors: ruErrors,
+    modals: ruModals,
   },
   en: {
     labels: enLabels,
     tooltips: enTooltips,
     forms: enForms,
     errors: enErrors,
+    modals: enModals,
   },
 };
 
@@ -33,7 +37,7 @@ i18next
   .init({
     supportedLngs,
     fallbackLng: 'ru',
-    ns: ['labels', 'tooltips', 'forms', 'errors'],
+    ns: ['labels', 'tooltips', 'forms', 'errors', 'modals'],
     debug: true,
     resources,
     interpolation: {
