@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
-import { ProfileForm } from 'src/features/forms/ui/ProfileForm';
-import s from './Profile.module.scss';
+import { ViewProfile } from 'src/widgets/viewProfile/ui';
 
 export const Profile: FC = () => {
-  return <ProfileForm classname={s.content} />;
+  return <ViewProfile />;
 };

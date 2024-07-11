@@ -4,14 +4,14 @@ import { Category } from 'src/entities/category/model/types';
 import DatabaseService from '../DatabaseService';
 import DataSource from '../DataSource';
 import AccountService from 'src/features/services/AccountService';
-import { AccountType, Profile } from 'src/entities/profile/model/types';
+import { AccountType, Account } from 'src/entities/account/model/types';
 
 jest.mock('../DataSource');
 
 const EMPTY_CATEGORY: Category = { id: 'empty', name: 'empty' };
 
 describe('AccountService', () => {
-  let profile: Profile;
+  let profile: Account;
   let product: Pick<Product, 'id' | 'name' | 'price' | 'category'>;
   let databaseService: DatabaseService;
 
@@ -27,7 +27,7 @@ describe('AccountService', () => {
       category: EMPTY_CATEGORY,
     };
 
-    profile = {} as Profile;
+    profile = {} as Account;
   });
 
   it('should no discount', () => {

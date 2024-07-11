@@ -7,15 +7,22 @@ import { Cart } from 'src/pages/cart/ui';
 import { Products } from 'src/pages/products/ui';
 import { Warehouse } from 'src/pages/warehouse/ui';
 import { NotFound } from 'src/pages/notFound/ui';
-import AddProductModal from 'src/features/managementProduct/ui/AddProductModal';
-import { EditProductModal } from 'src/features/managementProduct/ui';
+import { EditProductModal, AddProductModal } from 'src/features/manageProduct/ui';
+import { Auth } from 'src/pages/auth/ui';
+import { LogoutProfile } from 'src/features/logoutProfile/ui';
+import { AuthorizedRouter } from 'src/features/authorizedRouter/ui';
 
 const router = createHashRouter(
   createRoutesFromElements(
     <Route path="/" element={<Outlet />}>
       <Route path="/" element={<PageLayout />}>
         <Route index element={<Navigate to={'products'} replace />} />
-        <Route path="profile" element={<Profile />} />
+        <Route path="profile" element={<AuthorizedRouter />}>
+          <Route index element={<Navigate to={'auth'} replace />} />
+          <Route path="edit" element={<Profile />} />
+          <Route path="auth" element={<Auth />} />
+        </Route>
+        <Route path="logout" element={<LogoutProfile />} />
         <Route path="cart" element={<Cart />} />
         <Route path="products" element={<Products />} />
         <Route path="warehouse" element={<Warehouse />}>

@@ -1,13 +1,13 @@
 import React, { FC, useCallback } from 'react';
 import { ProductCard, ProductCardContainerProps } from 'src/entities/product/ui/productCard';
-import { removeProduct, selectCountProduct, setProductCount, useCartDispatch } from 'src/features/storeCart/model';
-import { useSelector } from 'react-redux';
+import { removeProduct, selectCountProduct, setProductCount } from 'src/features/store/model/slices/cart';
+import { useAppSelector, useAppDispatch } from 'src/features/store/model';
 
 type ProductItemProps = { id: string } & Omit<ProductCardContainerProps, 'initCountItems'>;
 
 const ProductItem: FC<ProductItemProps> = ({ id, ...rest }) => {
-  const dispatch = useCartDispatch();
-  const count = useSelector(selectCountProduct(id));
+  const dispatch = useAppDispatch();
+  const count = useAppSelector(selectCountProduct(id));
 
   const handleChangeCountItems = useCallback(
     (count: number) => {

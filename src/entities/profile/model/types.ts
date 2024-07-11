@@ -1,10 +1,11 @@
-export enum AccountType {
-  STANDARD,
-  PREMIUM,
-  GOLD,
-  FREE,
+export enum ProfileRole {
+  ADMIN,
+  USER,
 }
 
 export interface Profile {
-  accountType: AccountType;
+  nickname?: string;
+  about?: string;
+  email: string;
+  role: ProfileRole;
 }

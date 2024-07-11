@@ -10,4 +10,9 @@ export const enErrors = {
     productNotExists: 'Product "{productId}" not exists',
   },
   pageNotFound: 'Page <i>{{path}}</i> not found.',
+  authorization: {
+    profileExits: 'Profile with email "{{email}}" already exists.',
+    profileNotExits: 'Profile with email "{{email}}" does not exist.',
+    passwordIncorrect: 'Password incorrect',
+  },
 };

@@ -6,7 +6,7 @@ import { StyledLink } from 'src/shared/ui/styledLink';
 const ProfileButton: FC = () => {
   return (
     <IconableButton>
-      <StyledLink to="/profile">
+      <StyledLink to="/profile/auth">
         <ProfileIcon />
       </StyledLink>
     </IconableButton>

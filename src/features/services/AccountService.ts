@@ -1,4 +1,4 @@
-import { AccountType, Profile } from 'src/entities/profile/model/types';
+import { AccountType, Account } from 'src/entities/account/model/types';
 import DatabaseService from 'src/features/services/DatabaseService';
 import { Product } from 'src/entities/product/model/types';
 
@@ -7,7 +7,7 @@ class AccountService {
   private readonly databaseService: DatabaseService;
   private accDiscount: number = undefined;
 
-  constructor({ accountType }: Profile, databaseService: DatabaseService) {
+  constructor({ accountType }: Account, databaseService: DatabaseService) {
     this.accType = accountType;
     this.databaseService = databaseService;
   }
