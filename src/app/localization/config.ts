@@ -31,7 +31,7 @@ const resources = {
   },
 };
 
-i18next
+const localization = i18next
   .use(initReactI18next)
   .use(I18nextBrowserLanguageDetector)
   .init({
@@ -44,3 +44,5 @@ i18next
       escapeValue: false,
     },
   });
+
+export default localization;

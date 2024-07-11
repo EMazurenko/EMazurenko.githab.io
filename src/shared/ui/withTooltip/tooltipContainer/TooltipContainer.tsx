@@ -5,7 +5,6 @@ import Tooltip from 'src/shared/ui/withTooltip/tooltipContainer/tooltip/Tooltip'
 import s from './TooltipContainer.module.scss';
 
 const TOOLTIP_LIFETIME_SEC = 8;
-export const TOOLTIP_WIDTH = 200;
 
 const body = document.body;
 
@@ -13,9 +12,10 @@ export type TooltipContainerProps = {
   text: string;
   onHideTooltip: () => void;
   pos: Pos;
+  tooltipWidth: number;
 };
 
-const TooltipContainer: FC<TooltipContainerProps> = ({ text, pos, ...props }) => {
+const TooltipContainer: FC<TooltipContainerProps> = ({ text, tooltipWidth, pos, ...props }) => {
   const [visible, setVisible] = useState<boolean>(true);
 
   const handleHideTooltip = () => {
@@ -29,7 +29,7 @@ const TooltipContainer: FC<TooltipContainerProps> = ({ text, pos, ...props }) =>
   }, [text]);
 
   return createPortal(
-    <div className={s.root} onClick={handleHideTooltip} style={{ ...pos, width: `${TOOLTIP_WIDTH}px` }}>
+    <div className={s.root} onClick={handleHideTooltip} style={{ ...pos, width: `${tooltipWidth}px` }}>
       <Tooltip {...props} text={text} visible={visible} />
     </div>,
     body

@@ -1,11 +1,19 @@
-import React, { FC } from 'react';
-import { useProductContext } from 'src/features/storeProduct/ui';
+import React, { FC, useCallback } from 'react';
 import { AppendableProductList } from 'src/features/listProduct/ui';
+import { useAppDispatch, useAppSelector } from 'src/features/store/model';
+import { addRandomProducts, selectProducts } from 'src/features/store/model/slices/product';
+
+const COUNT_MORE_PRODUCTS = 3;
 
 const StoredProducts: FC = () => {
-  const { products, callbacks } = useProductContext();
+  const products = useAppSelector(selectProducts);
+  const dispatch = useAppDispatch();
 
-  return <AppendableProductList typeCard="Short" products={products} onMoreProducts={callbacks.addMore} />;
+  const handleMoreProducts = useCallback(() => {
+    dispatch(addRandomProducts(COUNT_MORE_PRODUCTS));
+  }, [dispatch]);
+
+  return <AppendableProductList typeCard="Short" products={products} onMoreProducts={handleMoreProducts} />;
 };
 
 export default StoredProducts;

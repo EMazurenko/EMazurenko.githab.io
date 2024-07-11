@@ -10,4 +10,9 @@ export const ruErrors = {
     productNotExists: 'Продукт "{productId}" не существует',
   },
   pageNotFound: 'Страница <i>{{path}}</i> не найдена.',
+  authorization: {
+    profileExits: 'Профиль с email "{email}" уже существует.',
+    profileNotExits: 'Профиль с email "{email}" не существует.',
+    passwordIncorrect: 'Неверный пароль',
+  },
 };

@@ -1,7 +1,7 @@
 import DatabaseService from '../DatabaseService';
 import DataSource from '../DataSource';
 import { CAR_CATEGORY, FOOD_CATEGORY, TOY_CATEGORY } from './consts';
-import { AccountType } from 'src/entities/profile/model/types';
+import { AccountType } from 'src/entities/account/model/types';
 
 jest.mock('../DataSource');
 

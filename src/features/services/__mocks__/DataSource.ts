@@ -1,4 +1,4 @@
-import { AccountType } from 'src/entities/profile/model/types';
+import { AccountType } from 'src/entities/account/model/types';
 
 type AccountDiscountType = {
   type: AccountType;

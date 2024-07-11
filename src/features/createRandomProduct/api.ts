@@ -1,5 +1,5 @@
 import { Product } from 'src/entities/product/model/types';
-import Categories from 'src/features/storeProduct/model/Categories';
+import Categories from 'src/features/store/model/slices/product/Categories';
 import photo_stub from 'src/entities/product/ui/productCard/stub.png';
 
 const PRODUCTS_BY_CATEGORY = new Map<string, string[]>([

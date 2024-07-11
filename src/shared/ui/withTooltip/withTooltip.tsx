@@ -1,9 +1,13 @@
 import React, { Component, FC, useCallback, useLayoutEffect, useMemo, useRef, useState } from 'react';
-import TooltipContainer, { TOOLTIP_WIDTH } from 'src/shared/ui/withTooltip/tooltipContainer/TooltipContainer';
+import TooltipContainer from 'src/shared/ui/withTooltip/tooltipContainer/TooltipContainer';
 import { Pos } from 'src/shared/model/types';
+
+export const TOOLTIP_DEFAULT_WIDTH = 200;
 
 export type CauseTooltip = {
   onCauseTooltip?: (text: string) => void;
+  tooltipWidth?: number;
+  requestRecalcPosition?: number;
 };
 
 export function withTooltip<T extends CauseTooltip>(Component: FC<T>) {
@@ -12,6 +16,7 @@ export function withTooltip<T extends CauseTooltip>(Component: FC<T>) {
     const [visibleTooltip, setVisibleTooltip] = useState<boolean>(false);
     const [pos, setPos] = useState<Pos>();
     const componentRef = useRef<HTMLDivElement>();
+    const tooltipWidth = props.tooltipWidth || TOOLTIP_DEFAULT_WIDTH;
 
     const handleCauseTooltip = useCallback((text: string) => {
       setText(text);
@@ -27,7 +32,7 @@ export function withTooltip<T extends CauseTooltip>(Component: FC<T>) {
         const parent = componentRef.current.getBoundingClientRect();
         setPos({
           top: parent.top + parent.height,
-          left: Math.max(0, parent.left + (parent.width - TOOLTIP_WIDTH) / 2),
+          left: Math.max(0, parent.left + (parent.width - tooltipWidth) / 2),
         });
       };
 
@@ -37,7 +42,7 @@ export function withTooltip<T extends CauseTooltip>(Component: FC<T>) {
       resizeObserver.observe(document.body);
 
       return () => resizeObserver.unobserve(document.body);
-    }, []);
+    }, [props.requestRecalcPosition, tooltipWidth]);
 
     const memoComponent = useMemo(() => {
       return <Component {...props} onCauseTooltip={handleCauseTooltip} />;
@@ -46,7 +51,9 @@ export function withTooltip<T extends CauseTooltip>(Component: FC<T>) {
     return (
       <div ref={componentRef} style={{ display: 'inline-block' }}>
         {memoComponent}
-        {visibleTooltip && <TooltipContainer text={text} onHideTooltip={handleCloseTooltip} pos={pos} />}
+        {visibleTooltip && (
+          <TooltipContainer text={text} tooltipWidth={tooltipWidth} onHideTooltip={handleCloseTooltip} pos={pos} />
+        )}
       </div>
     );
   };
