@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
@@ -9,7 +10,7 @@ const dist = path.join(__dirname, 'dist');
 const src = path.join(__dirname, 'src');
 const host = 'localhost';
 
-module.exports = (_, args) => {
+module.exports = (env, args) => {
   return {
     devtool: 'source-map',
     context: src,
@@ -100,6 +101,14 @@ module.exports = (_, args) => {
           configFile: path.join(__dirname, 'tsconfig.json'),
         },
       }),
+      new webpack.DefinePlugin({
+        process: {
+          env: {
+            REACT_APP_USE_IN_MEMORY_SERVICES: env.REACT_APP_USE_IN_MEMORY_SERVICES,
+            REACT_APP_SERVER_URL: JSON.stringify('http://19429ba06ff2.vps.myjino.ru/api'),
+          }
+        }
+      })
     ],
   };
 };

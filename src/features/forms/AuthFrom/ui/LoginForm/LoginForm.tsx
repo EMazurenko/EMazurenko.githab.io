@@ -6,7 +6,7 @@ import PasswordFormInput from '../AuthFormInputs/PasswordFormInput';
 import s from './LoginForm.module.scss';
 import EmailFormInput from 'src/features/forms/AuthFrom/ui/AuthFormInputs/EmailFormInput';
 import RegistrationLabel from 'src/features/forms/AuthFrom/ui/LoginForm/RegistrationLabel/RegistrationLabel';
-import { AuthPair } from 'src/features/forms/AuthFrom/model/types';
+import { AuthPair } from 'src/shared/model/types';
 
 type LoginFormValues = {
   email: string;
@@ -22,14 +22,12 @@ const LoginForm: FC<LoginFormProps> = ({ t, onNeedRegistration, onSuccessLogin }
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<LoginFormValues>({
     defaultValues: { email: '', password: '' },
   });
 
   const handleClick: SubmitHandler<LoginFormValues> = (data) => {
-    reset();
     onSuccessLogin(data);
   };
 

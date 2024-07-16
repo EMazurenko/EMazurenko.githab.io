@@ -5,7 +5,7 @@ import { FormButton, FormContainer } from 'src/shared/ui/form';
 import PasswordFormInput from '../AuthFormInputs/PasswordFormInput';
 import s from 'src/features/forms/AuthFrom/ui/LoginForm/LoginForm.module.scss';
 import EmailFormInput from 'src/features/forms/AuthFrom/ui/AuthFormInputs/EmailFormInput';
-import { AuthPair } from 'src/features/forms/AuthFrom/model/types';
+import { AuthPair } from 'src/shared/model/types';
 
 type RegFormValues = {
   email: string;

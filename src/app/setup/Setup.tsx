@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useEffect, useInsertionEffect } from 'react';
 import '../localization/config';
 import { useAppDispatch, useAppSelector } from 'src/features/store/model';
 import { initialize, selectIsInit } from 'src/features/store/model/slices/init';
@@ -12,7 +12,7 @@ export const Setup: FC<StartupProps> = ({ children }) => {
   const dispatch = useAppDispatch();
   const isInit = useAppSelector(selectIsInit);
 
-  useEffect(() => {
+  useInsertionEffect(() => {
     dispatch(initialize());
   }, [dispatch]);
 

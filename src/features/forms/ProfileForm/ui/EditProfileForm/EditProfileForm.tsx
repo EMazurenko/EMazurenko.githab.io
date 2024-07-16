@@ -14,22 +14,29 @@ type EditProfileFormValues = {
 type EditProfileFormProps = {
   className?: string;
   email?: string;
+  disableAbout?: boolean;
   onSuccessEdit: (profile: Pick<Profile, 'nickname' | 'about'>) => void;
 } & WithTranslation &
   Partial<EditProfileFormValues>;
 
-const EditProfileForm: FC<EditProfileFormProps> = ({ t, className, email, nickname, about, onSuccessEdit }) => {
+const EditProfileForm: FC<EditProfileFormProps> = ({
+  t,
+  className,
+  email,
+  nickname,
+  about,
+  disableAbout,
+  onSuccessEdit,
+}) => {
   const {
     register,
     handleSubmit,
-    reset,
     formState: { errors },
   } = useForm<EditProfileFormValues>({
     defaultValues: { nickname, about },
   });
 
   const handleClick: SubmitHandler<EditProfileFormValues> = (data) => {
-    reset();
     onSuccessEdit(data);
   };
 
@@ -50,12 +57,14 @@ const EditProfileForm: FC<EditProfileFormProps> = ({ t, className, email, nickna
         })}
       />
 
-      <FormInput
-        label={t('profile.inputs.about.label', 'О себе')}
-        inputType={FormInputsTypes.textarea}
-        placeholder={t('profile.inputs.about.placeholder', 'напишите что-нибудь о себе')}
-        {...register('about')}
-      />
+      {!disableAbout && (
+        <FormInput
+          label={t('profile.inputs.about.label', 'О себе')}
+          inputType={FormInputsTypes.textarea}
+          placeholder={t('profile.inputs.about.placeholder', 'напишите что-нибудь о себе')}
+          {...register('about')}
+        />
+      )}
 
       <FormButton type={'submit'}>{t('profile.submit', 'Сохранить')}</FormButton>
     </FormContainer>

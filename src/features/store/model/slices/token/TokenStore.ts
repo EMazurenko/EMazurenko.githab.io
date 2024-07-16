@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StoreState, StoreThunk } from 'src/features/store/model';
+import { authorize } from 'src/features/store/model/slices/profile';
 
 type TokenStoreType = {
   value: string;
@@ -17,13 +18,19 @@ const tokenSlice = createSlice({
       state.value = action.payload;
     },
   },
+  extraReducers: (builder) => {
+    builder.addCase(authorize.fulfilled, (state, action) => {
+      state.value = action.payload.token;
+    });
+  },
 });
 
-const generateToken = (): StoreThunk => (dispatch) => {
-  const token = Math.random().toString(16);
-  dispatch(setToken(token));
-  localStorage.setItem('token', token);
-};
+const saveToken =
+  (token: string): StoreThunk =>
+  (dispatch) => {
+    dispatch(setToken(token));
+    localStorage.setItem('token', token);
+  };
 
 const clearToken = (): StoreThunk => (dispatch) => {
   const token = null;
@@ -34,7 +41,7 @@ const clearToken = (): StoreThunk => (dispatch) => {
 export const token = tokenSlice.reducer;
 export const { setToken } = tokenSlice.actions;
 export const tokenThunks = {
-  generateToken,
+  saveToken,
   clearToken,
 };
 export const selectToken = (state: StoreState): string => state.token.value;
