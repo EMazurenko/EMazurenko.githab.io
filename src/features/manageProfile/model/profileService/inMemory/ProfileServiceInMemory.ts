@@ -1,4 +1,4 @@
-import { ProfileService } from './ProfileService';
+import { ProfileAuthOutput, ProfileService } from '../ProfileService';
 import { Profile, ProfileRole } from 'src/entities/profile/model/types';
 import i18next from 'i18next';
 
@@ -10,7 +10,7 @@ export class ProfileServiceInMemory implements ProfileService {
     'admin@email.ru': { email: 'admin@email.ru', role: ProfileRole.ADMIN, password: 'password' },
   };
 
-  add(email: string, password: string, role: ProfileRole = ProfileRole.USER): Profile {
+  add(email: string, password: string, role: ProfileRole = ProfileRole.USER): Promise<ProfileAuthOutput> {
     if (this.exists(email)) {
       throw new Error(
         i18next.t('authorization.profileExits', `Профиль с email [${email}] уже существует.`, { ns: 'errors', email })
@@ -18,10 +18,13 @@ export class ProfileServiceInMemory implements ProfileService {
     }
     const storedProfile = { email, password, role };
     this.profileStore[email] = storedProfile;
-    return storedProfile as Profile;
+    return Promise.resolve<ProfileAuthOutput>({
+      profile: storedProfile,
+      token: Math.random().toString(16),
+    });
   }
 
-  check(email: string, password: string): Profile {
+  check(email: string, password: string): Promise<ProfileAuthOutput> {
     if (!this.exists(email)) {
       throw new Error(
         i18next.t('authorization.profileNotExits', `Профиль с email [${email}] не существует.`, { ns: 'errors', email })
@@ -31,11 +34,14 @@ export class ProfileServiceInMemory implements ProfileService {
       if (profile.password !== password) {
         throw new Error(i18next.t('authorization.passwordIncorrect', 'Неверный пароль', { ns: 'errors' }));
       }
-      return profile as Profile;
+      return Promise.resolve<ProfileAuthOutput>({
+        profile,
+        token: Math.random().toString(16),
+      });
     }
   }
 
-  update(profile: Profile): Profile {
+  update(profile: Profile): Promise<Profile> {
     const email = profile.email;
     if (!this.exists(email)) {
       throw new Error(
@@ -45,7 +51,7 @@ export class ProfileServiceInMemory implements ProfileService {
     let updatedProfile = this.profileStore[email];
     updatedProfile = { ...updatedProfile, ...profile };
     this.profileStore[email] = updatedProfile;
-    return updatedProfile as Profile;
+    return Promise.resolve<Profile>(updatedProfile);
   }
 
   private exists(email: string): boolean {

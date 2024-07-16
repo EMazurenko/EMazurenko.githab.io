@@ -1,4 +1,4 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC, useLayoutEffect } from 'react';
 import { Outlet, useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from 'src/features/store/model';
 import { selectHasToken } from 'src/features/store/model/slices/token';
@@ -8,7 +8,7 @@ const AuthorizedRouter: FC = () => {
   const path = useLocation().pathname;
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (hasToken && path === '/profile/auth') {
       navigate('/profile/edit', { replace: true });
     } else if (!hasToken && path === '/profile/edit') {

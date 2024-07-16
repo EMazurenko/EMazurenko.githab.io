@@ -1,5 +1,5 @@
 import { ProfileService } from 'src/features/manageProfile/model/profileService/ProfileService';
-import { ProfileServiceInMemory } from 'src/features/manageProfile/model/profileService/ProfileServiceInMemory';
+import { ProfileServiceInMemory } from 'src/features/manageProfile/model/profileService/inMemory/ProfileServiceInMemory';
 import { Profile, ProfileRole } from 'src/entities/profile/model/types';
 
 describe('ProfileServiceInMemory', () => {
@@ -19,10 +19,11 @@ describe('ProfileServiceInMemory', () => {
     profileService = new ProfileServiceInMemory();
   });
 
-  it('should success add on not exists email', () => {
-    const profile = profileService.add(newProfile.email, newProfile.password, newProfile.role);
+  it('should success add on not exists email', async () => {
+    const { profile, token } = await profileService.add(newProfile.email, newProfile.password, newProfile.role);
     expect(profile.email).toBe(newProfile.email);
     expect(profile.role).toBe(newProfile.role);
+    expect(token).toBeTruthy();
   });
 
   it('should error add on exists email', () => {
@@ -31,10 +32,11 @@ describe('ProfileServiceInMemory', () => {
     }).toThrow();
   });
 
-  it('should success check on exists email and correct password', () => {
-    const profile = profileService.check(existsProfile.email, existsProfile.password);
+  it('should success check on exists email and correct password', async () => {
+    const { profile, token } = await profileService.check(existsProfile.email, existsProfile.password);
     expect(profile.email).toBe(existsProfile.email);
     expect(profile.role).toBe(existsProfile.role);
+    expect(token).toBeTruthy();
   });
 
   it('should error check on not exists email', () => {
@@ -49,8 +51,8 @@ describe('ProfileServiceInMemory', () => {
     }).toThrow();
   });
 
-  it('should success update on exists email', () => {
-    const profile = profileService.update({ ...existsProfile, nickname: 'admin', about: 'about' } as Profile);
+  it('should success update on exists email', async () => {
+    const profile = await profileService.update({ ...existsProfile, nickname: 'admin', about: 'about' } as Profile);
     expect(profile.email).toBe(existsProfile.email);
     expect(profile.nickname).toBe('admin');
     expect(profile.about).toBe('about');
