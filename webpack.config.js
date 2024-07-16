@@ -105,7 +105,7 @@ module.exports = (env, args) => {
         process: {
           env: {
             REACT_APP_USE_IN_MEMORY_SERVICES: env.REACT_APP_USE_IN_MEMORY_SERVICES,
-            REACT_APP_SERVER_URL: JSON.stringify('http://19429ba06ff2.vps.myjino.ru/api'),
+            REACT_APP_SERVER_URL: JSON.stringify('https://19429ba06ff2.vps.myjino.ru/api'),
           }
         }
       })
