@@ -37,7 +37,7 @@ export class ProfileServiceRest implements ProfileService {
         else return Promise.reject(response.json());
       })
       .then((profileResult) => this.parseProfile(profileResult))
-      .catch((reason) => reason.then((errorList) => Promise.reject(new Error(this.processErrors(errorList)))));
+      .catch((reason) => this.processReason(reason));
   }
 
   private auth(email: string, password: string, isRegistration: boolean): Promise<ProfileAuthOutput> {
@@ -48,7 +48,15 @@ export class ProfileServiceRest implements ProfileService {
         this.token = token;
         return Promise.resolve({ profile: this.parseProfile(profile), token });
       })
-      .catch((reason) => reason.then((errorList) => Promise.reject(new Error(this.processErrors(errorList)))));
+      .catch((reason) => this.processReason(reason));
+  }
+
+  private processReason(reason: Error | Promise<ServerErrors>): Promise<never> {
+    if (reason instanceof Error) {
+      return Promise.reject(reason);
+    } else {
+      return reason.then((errorList) => Promise.reject(new Error(this.processErrors(errorList))));
+    }
   }
 
   private processErrors(errorResult: ServerErrors): string {
