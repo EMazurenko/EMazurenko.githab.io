@@ -1,8 +1,8 @@
 import { useAppDispatch, useAppSelector } from 'src/features/store/model';
 import { selectProfile, setProfile } from 'src/features/store/model/slices/profile';
 import { Profile } from 'src/entities/profile/model/types';
-import { profileService } from 'src/features/manageProfile/model/profileService';
 import { useState } from 'react';
+import { coreService } from 'src/features/coreService/model';
 
 export const useEditProfile = () => {
   const [textTooltip, setTextTooltip] = useState<string>();
@@ -11,8 +11,8 @@ export const useEditProfile = () => {
 
   const onSuccessEdit = (profile: Pick<Profile, 'nickname' | 'about'>) => {
     setTextTooltip('');
-    profileService
-      .update({ ...sourceProfile, ...profile })
+    coreService
+      .updateProfile({ ...sourceProfile, ...profile })
       .then((updatedProfile) => {
         dispatch(setProfile(updatedProfile));
         setTextTooltip('🤟');

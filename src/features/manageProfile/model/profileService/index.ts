@@ -1,9 +1,6 @@
-import { ProfileService, ProfileAuthOutput as ProfileAuthOutputRx } from './ProfileService';
-import { ProfileServiceInMemory } from './inMemory/ProfileServiceInMemory';
-import { ProfileServiceRest } from 'src/features/manageProfile/model/profileService/rest/ProfileServiceRest';
-
-export const profileService: ProfileService = process.env.REACT_APP_USE_IN_MEMORY_SERVICES
-  ? new ProfileServiceInMemory()
-  : new ProfileServiceRest(process.env.REACT_APP_SERVER_URL);
+import { ProfileAuthOutput as ProfileAuthOutputRx, ProfileService as ProfileServiceRx } from './ProfileService';
 
 export type ProfileAuthOutput = ProfileAuthOutputRx;
+export type ProfileService = ProfileServiceRx;
+export { ProfileServiceRest } from './rest/ProfileServiceRest';
+export { ProfileServiceInMemory } from './inMemory/ProfileServiceInMemory';

@@ -34,12 +34,11 @@ const ProductForm: FC<ProductFormProps> = ({ t, productId, onSubmit }) => {
     control,
     formState: { errors },
   } = useForm<ProductFormValues>({
-    defaultValues: { ...initProduct, categoryId: initProduct.category.id },
+    defaultValues: { ...initProduct },
   });
 
   const handleClick: SubmitHandler<ProductFormValues> = (data) => {
     const currentProduct = initProduct;
-    //const currentProduct = getProduct(initProduct.id);
 
     const newProduct = {
       ...currentProduct,

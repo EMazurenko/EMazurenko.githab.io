@@ -1,8 +1,9 @@
 import { Profile, ProfileRole } from 'src/entities/profile/model/types';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StoreState } from 'src/features/store/model';
-import { ProfileAuthOutput, profileService } from 'src/features/manageProfile/model/profileService';
+import { ProfileAuthOutput } from 'src/features/manageProfile/model/profileService';
 import { AuthPair } from 'src/shared/model/types';
+import { coreService } from 'src/features/coreService/model';
 
 type ProfileStoreType = {
   value: Profile;
@@ -24,7 +25,6 @@ const profileSlice = createSlice({
       state.value = {} as Profile;
     },
     setError: (state, action: PayloadAction<string>) => {
-      console.log('Set: ', action.payload);
       state.error = action.payload;
     },
     clearError: (state) => {
@@ -67,8 +67,8 @@ export const authorize = createAsyncThunk(
   async ({ email, password, isRegistration }: AuthorizeThunkType, thunkApi) => {
     thunkApi.dispatch(clearError());
     const response: ProfileAuthOutput = isRegistration
-      ? await profileService.add(email, password)
-      : await profileService.check(email, password);
+      ? await coreService.addProfile(email, password)
+      : await coreService.checkProfile(email, password);
     return response;
   }
 );

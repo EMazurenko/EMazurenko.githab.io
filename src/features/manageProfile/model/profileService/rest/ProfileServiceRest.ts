@@ -1,18 +1,19 @@
-import i18next from 'i18next';
 import { ProfileService } from 'src/features/manageProfile/model/profileService/ProfileService';
 import { ProfileAuthOutput } from 'src/features/manageProfile/model/profileService';
 import { Profile, ProfileRole } from 'src/entities/profile/model/types';
 import { AuthService } from 'src/features/manageProfile/model/profileService/rest/AuthService';
-import { ErrorCode, ProfileResult, ServerErrors } from 'src/features/manageProfile/model/profileService/rest/types';
+import { ProfileResult } from 'src/features/coreService/model/types';
 
 export class ProfileServiceRest implements ProfileService {
-  private authService: AuthService;
-  private serverUrl: string;
+  private readonly authService: AuthService;
+  private readonly serverUrl: string;
+  private readonly commandId: string;
   private token: string;
 
-  constructor(serverUrl: string) {
+  constructor(serverUrl: string, commandId: string) {
     this.serverUrl = serverUrl;
-    this.authService = new AuthService(serverUrl);
+    this.commandId = commandId;
+    this.authService = new AuthService(serverUrl, commandId);
   }
 
   add(email: string, password: string): Promise<ProfileAuthOutput> {
@@ -36,37 +37,16 @@ export class ProfileServiceRest implements ProfileService {
         if (response.ok) return response.json();
         else return Promise.reject(response.json());
       })
-      .then((profileResult) => this.parseProfile(profileResult))
-      .catch((reason) => this.processReason(reason));
+      .then((profileResult) => this.parseProfile(profileResult));
   }
 
   private auth(email: string, password: string, isRegistration: boolean): Promise<ProfileAuthOutput> {
     return (
       isRegistration ? this.authService.signup({ email, password }) : this.authService.signin({ email, password })
-    )
-      .then(({ profile, token }) => {
-        this.token = token;
-        return Promise.resolve({ profile: this.parseProfile(profile), token });
-      })
-      .catch((reason) => this.processReason(reason));
-  }
-
-  private processReason(reason: Error | Promise<ServerErrors>): Promise<never> {
-    if (reason instanceof Error) {
-      return Promise.reject(reason);
-    } else {
-      return reason.then((errorList) => Promise.reject(new Error(this.processErrors(errorList))));
-    }
-  }
-
-  private processErrors(errorResult: ServerErrors): string {
-    if ('errors' in errorResult) {
-      return errorResult.errors
-        .reduce((error, e) => error + i18next.t(`server.${e.extensions.code}`, { ns: 'errors' }) + '\n', '')
-        .trim();
-    } else {
-      return i18next.t(`server.${ErrorCode.ERR_UNKNOWN}`, { ns: 'errors' });
-    }
+    ).then(({ profile, token }) => {
+      this.token = token;
+      return Promise.resolve({ profile: this.parseProfile(profile), token });
+    });
   }
 
   private parseProfile(profile: ProfileResult): Profile {

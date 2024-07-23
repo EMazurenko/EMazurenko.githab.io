@@ -1,6 +1,19 @@
 import { Product } from 'src/entities/product/model/types';
-import Categories from 'src/features/store/model/slices/product/Categories';
 import photo_stub from 'src/entities/product/ui/productCard/stub.png';
+import { Category } from 'src/entities/category/model/types';
+
+const Categories: Category[] = [
+  { id: '1', name: 'cat_1', photo: 'file://photo_cat_1' },
+  { id: '2', name: 'cat_2' },
+  { id: '3', name: 'cat_3', photo: 'file://photo_cat_3' },
+  { id: '4', name: 'cat_4' },
+  { id: '5', name: 'cat_5', photo: 'file://photo_cat_5' },
+  { id: '6', name: 'cat_6' },
+  { id: '7', name: 'cat_7' },
+  { id: '8', name: 'cat_8' },
+  { id: '9', name: 'cat_9' },
+  { id: '10', name: 'cat_10' },
+];
 
 const PRODUCTS_BY_CATEGORY = new Map<string, string[]>([
   ['cat_1', ['product_1_1', 'product_1_2', 'product_1_3']],

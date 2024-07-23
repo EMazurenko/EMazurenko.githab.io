@@ -14,4 +14,8 @@ export const ruLabels = {
   product: {
     more: 'Показать ещё',
   },
+  order: {
+    button: 'Заказать',
+    status: 'Статус заказа',
+  },
 };

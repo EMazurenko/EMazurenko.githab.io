@@ -14,4 +14,8 @@ export const enLabels = {
   product: {
     more: 'Show more',
   },
+  order: {
+    button: 'Order',
+    status: 'Status order',
+  },
 };
