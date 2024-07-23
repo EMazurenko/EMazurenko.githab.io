@@ -1,15 +1,16 @@
-import { AuthResult, SignBody } from 'src/features/manageProfile/model/profileService/rest/types';
+import { AuthResult, SignBody } from 'src/features/coreService/model/types';
 
 export class AuthService {
-  private static readonly COMMAND_ID = '202402_MAZURENKO_EV';
-  private serverUrl: string;
+  private readonly serverUrl: string;
+  private readonly commandId: string;
 
-  constructor(serverUrl: string) {
+  constructor(serverUrl: string, commandId: string) {
     this.serverUrl = serverUrl;
+    this.commandId = commandId;
   }
 
   signup(request: SignBody): Promise<AuthResult> {
-    return this.fetch('signup', { ...request, commandId: AuthService.COMMAND_ID });
+    return this.fetch('signup', { ...request, commandId: this.commandId });
   }
 
   signin(request: SignBody): Promise<AuthResult> {

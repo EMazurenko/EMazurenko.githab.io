@@ -1,10 +1,11 @@
 import { useAppDispatch } from 'src/features/store/model';
 import { AuthPair } from 'src/shared/model/types';
 import { useMutation } from '@tanstack/react-query';
-import { ProfileAuthOutput, profileService } from 'src/features/manageProfile/model/profileService';
+import { ProfileAuthOutput } from 'src/features/manageProfile/model/profileService';
 import { tokenThunks } from 'src/features/store/model/slices/token';
 import { setProfile } from 'src/features/store/model/slices/profile';
 import { useEffect } from 'react';
+import { coreService } from 'src/features/coreService/model';
 
 export const useAuthorizeRQ = () => {
   const dispatch = useAppDispatch();
@@ -36,7 +37,7 @@ export const useAuthorizeRQ = () => {
 
   return {
     error: error?.message,
-    onSuccessLogin: ({ email, password }: AuthPair) => mutate(() => profileService.check(email, password)),
-    onSuccessRegistration: ({ email, password }: AuthPair) => mutate(() => profileService.add(email, password)),
+    onSuccessLogin: ({ email, password }: AuthPair) => mutate(() => coreService.checkProfile(email, password)),
+    onSuccessRegistration: ({ email, password }: AuthPair) => mutate(() => coreService.addProfile(email, password)),
   };
 };

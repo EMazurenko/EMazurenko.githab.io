@@ -1,17 +1,32 @@
 import React, { FC } from 'react';
 import s from './CartedProducts.module.scss';
-import { selectCart } from 'src/features/store/model/slices/cart';
 import { ProductList } from 'src/features/listProduct/ui';
-import { useAppSelector } from 'src/features/store/model';
-import { selectProducts } from 'src/features/store/model/slices/product';
+import { OrderButton } from 'src/features/orderProducts/ui';
+import { useCartProducts } from 'src/widgets/cartedProducts/model/useCartProducts';
+import { TooltipPanel } from 'src/shared/ui/tooltipPanel';
+
+const TOOLTIP_WIDTH = 400;
 
 const CartedProducts: FC = () => {
-  const products = useAppSelector(selectProducts);
-  const inCartProductIds = useAppSelector(selectCart).products;
-  const inCartProducts = products.filter((p) => p.id in inCartProductIds);
+  const { inCartProducts, onOrderProducts, orderStatus } = useCartProducts();
 
-  if (inCartProducts.length) return <ProductList typeCard={'InCart'} products={inCartProducts} />;
-  else return <div className={s.empty_cart}>{'🙈'}</div>;
+  return (
+    <>
+      {inCartProducts.length ? (
+        <>
+          <ProductList typeCard={'InCart'} products={inCartProducts} />
+          <div className={s.order}>
+            <OrderButton onClick={onOrderProducts} />
+          </div>
+        </>
+      ) : (
+        <div className={s.empty_cart}>{'🙈'}</div>
+      )}
+      <div className={s.status}>
+        <TooltipPanel text={orderStatus} tooltipWidth={TOOLTIP_WIDTH} requestRecalcPosition={inCartProducts.length} />
+      </div>
+    </>
+  );
 };
 
 export default CartedProducts;

@@ -11,7 +11,7 @@ const AddProductModal: FC<AddProductModalProps> = ({ t }) => {
 
   return (
     <ModalWindow title={t('addProduct.title', 'Добавление продукта')} onClose={onClose}>
-      <ProductForm />
+      <ProductForm onSubmit={onClose} />
     </ModalWindow>
   );
 };

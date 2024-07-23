@@ -2,9 +2,7 @@ import React, { FC, useEffect, useInsertionEffect } from 'react';
 import '../localization/config';
 import { useAppDispatch, useAppSelector } from 'src/features/store/model';
 import { initialize, selectIsInit } from 'src/features/store/model/slices/init';
-import { addRandomProducts } from 'src/features/store/model/slices/product';
-
-const COUNT_INIT_PRODUCTS = 15;
+import { addInitProducts, setInitCategories } from 'src/features/store/model/slices/product';
 
 type StartupProps = { children: React.ReactNode };
 
@@ -18,7 +16,8 @@ export const Setup: FC<StartupProps> = ({ children }) => {
 
   useEffect(() => {
     if (isInit) {
-      dispatch(addRandomProducts(COUNT_INIT_PRODUCTS));
+      dispatch(addInitProducts());
+      dispatch(setInitCategories());
     }
   }, [isInit, dispatch]);
 

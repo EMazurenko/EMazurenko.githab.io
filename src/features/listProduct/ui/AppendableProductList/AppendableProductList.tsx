@@ -5,13 +5,14 @@ import ProductList, { ProductListProps } from 'src/features/listProduct/ui/Produ
 
 type AppendableProductListProps = ProductListProps & {
   onMoreProducts: () => void;
+  noMoreProducts?: boolean;
 };
 
-const AppendableProductList: FC<AppendableProductListProps> = ({ onMoreProducts, ...props }) => {
+const AppendableProductList: FC<AppendableProductListProps> = ({ onMoreProducts, noMoreProducts, ...props }) => {
   return (
     <div className={s.root}>
       <ProductList {...props} className={s.product_list} />
-      <MoreButton onMoreProducts={onMoreProducts} />
+      {!noMoreProducts && <MoreButton onMoreProducts={onMoreProducts} />}
     </div>
   );
 };

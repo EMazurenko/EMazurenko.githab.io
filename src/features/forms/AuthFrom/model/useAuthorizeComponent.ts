@@ -1,9 +1,10 @@
-import { ProfileAuthOutput, profileService } from 'src/features/manageProfile/model/profileService';
 import { useState } from 'react';
 import { useAppDispatch } from 'src/features/store/model';
 import { setProfile } from 'src/features/store/model/slices/profile';
 import { tokenThunks } from 'src/features/store/model/slices/token';
 import { AuthPair } from 'src/shared/model/types';
+import { coreService } from 'src/features/coreService/model';
+import { ProfileAuthOutput } from 'src/features/manageProfile/model/profileService';
 
 export const useAuthorizeComponent = () => {
   const dispatch = useAppDispatch();
@@ -26,8 +27,8 @@ export const useAuthorizeComponent = () => {
   return {
     error,
     onSuccessLogin: (authPair: AuthPair) =>
-      baseAuthCallback(authPair)((email: string, password: string) => profileService.check(email, password)),
+      baseAuthCallback(authPair)((email: string, password: string) => coreService.checkProfile(email, password)),
     onSuccessRegistration: (authPair: AuthPair) =>
-      baseAuthCallback(authPair)((email: string, password: string) => profileService.add(email, password)),
+      baseAuthCallback(authPair)((email: string, password: string) => coreService.addProfile(email, password)),
   };
 };

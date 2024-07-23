@@ -7,13 +7,14 @@ import {
   setProfile,
 } from 'src/features/store/model/slices/profile';
 import { AuthPair } from 'src/shared/model/types';
-import { profileService, ProfileAuthOutput } from 'src/features/manageProfile/model/profileService';
+import { ProfileAuthOutput } from 'src/features/manageProfile/model/profileService';
 import { setToken } from 'src/features/store/model/slices/token';
+import { coreService } from 'src/features/coreService/model';
 
 function* workerRegistrationProfile() {
   const { email, password } = (yield select(selectAuthPair)) as AuthPair;
   try {
-    const { profile, token }: ProfileAuthOutput = yield apply(profileService, 'add', [email, password]);
+    const { profile, token }: ProfileAuthOutput = yield apply(coreService, 'addProfile', [email, password]);
     yield put(setProfile(profile));
     yield put(setToken(token));
   } catch (e) {
@@ -24,7 +25,7 @@ function* workerRegistrationProfile() {
 function* workerLoginProfile() {
   const { email, password } = (yield select(selectAuthPair)) as AuthPair;
   try {
-    const { profile, token }: ProfileAuthOutput = yield apply(profileService, 'check', [email, password]);
+    const { profile, token }: ProfileAuthOutput = yield apply(coreService, 'checkProfile', [email, password]);
     yield put(setProfile(profile));
     yield put(setToken(token));
   } catch (e) {
