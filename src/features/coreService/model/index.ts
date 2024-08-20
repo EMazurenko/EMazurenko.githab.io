@@ -1,1 +1,1 @@
-export {default as coreService} from './CoreServiceFactory';
+export * from './CoreServiceFactory';

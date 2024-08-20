@@ -17,8 +17,8 @@ export const useCartProducts = () => {
   const [orderStatus, setOrderStatus] = useState<string>();
 
   const setTextResult = useCallback(
-    (text) => {
-      setOrderStatus(`${t('order.status', 'Статус заказа')}: ${mapStatus(text, t)}`);
+    (text, isSuccess = true) => {
+      setOrderStatus(isSuccess ? `${t('order.status', 'Статус заказа')}: ${mapStatus(text, t)}` : text);
     },
     [t, setOrderStatus]
   );
@@ -36,7 +36,7 @@ export const useCartProducts = () => {
         setTextResult(status);
         dispatch(clearCart());
       })
-      .catch((reason) => setTextResult(reason.message));
+      .catch((reason) => setTextResult(reason.message, false));
   }, [inCartProductIds, setTextResult, setOrderStatus, dispatch]);
 
   return { inCartProducts, onOrderProducts: handleOrderProducts, orderStatus, costCart };
