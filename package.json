@@ -6,7 +6,7 @@
   "author": "Evgenyi Mazurenko <evgenyi.mazurenko@gmail.com>",
   "scripts": {
     "start": "webpack serve --mode development --env REACT_APP_USE_SERVICES_MODE=rest",
-    "build": "webpack --mode production",
+    "build": "webpack --mode production --env REACT_APP_USE_SERVICES_MODE=rest",
     "test": "jest src",
     "lint": "eslint src --fix",
     "storybook": "storybook dev -p 6006",
