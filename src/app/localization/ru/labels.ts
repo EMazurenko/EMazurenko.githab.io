@@ -17,6 +17,7 @@ export const ruLabels = {
   order: {
     button: 'Заказать',
     status: 'Статус заказа',
+    needAuth: 'Авторизуйтесь, пожалуйста',
   },
   orderCard: {
     orderTitle: {
