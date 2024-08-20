@@ -3,7 +3,6 @@ import { coreService } from 'src/features/coreService/model';
 import {
   addProduct,
   clearError,
-  setCategories,
   setError,
   setHasMoreProducts,
 } from 'src/features/store/model/slices/product/ProductStore';
@@ -30,15 +29,6 @@ export const addMoreProducts = (): StoreThunk => (dispatch) => {
         dispatch(addProduct(product));
       }
       dispatch(setHasMoreProducts(hasMoreProducts));
-    })
-  );
-};
-
-export const setInitCategories = (): StoreThunk => (dispatch) => {
-  processError(
-    dispatch,
-    coreService.getCategories().then((categories) => {
-      dispatch(setCategories(categories));
     })
   );
 };

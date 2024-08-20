@@ -77,16 +77,53 @@ export const ruForms = {
       },
     },
   },
-  productManagement: {
-    title: 'Добавление/Редактирование товаров',
+  category: {
+    edit: {
+      title: 'Редактирование категории',
+      submit: 'Обновить',
+    },
+    create: {
+      title: 'Создание категории',
+      submit: 'Сохранить',
+    },
     inputs: {
-      productId: {
-        label: 'Продукт',
+      name: {
+        label: 'Наименование категории',
+        placeholder: '',
+      },
+      photo: {
+        label: 'Ссылка на фото категории',
+        placeholder: 'URL',
       },
     },
-    buttons: {
-      add: 'Добавить продукт',
-      edit: 'Редактировать продукт',
+  },
+  productManagement: {
+    product: {
+      title: 'Добавление/Редактирование товаров',
+      inputs: {
+        productId: {
+          label: 'Продукт',
+        },
+      },
+      buttons: {
+        add: 'Добавить продукт',
+        edit: 'Редактировать продукт',
+      },
     },
+    category: {
+      title: 'Добавление/Редактирование категорий',
+      inputs: {
+        categoryId: {
+          label: 'Категория',
+        },
+      },
+      buttons: {
+        add: 'Добавить категорию',
+        edit: 'Редактировать категорию',
+      },
+    },
+  },
+  orders: {
+    title: 'Заказы',
   },
 };

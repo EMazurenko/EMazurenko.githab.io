@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import s from './Warehouse.module.scss';
 import { Outlet, Navigate } from 'react-router-dom';
 import { ProductManagementForm } from 'src/features/forms/ProductManagementForm';
+import { CategoryManagementForm } from 'src/features/forms/CategoryManagmentForm';
 import { useAppSelector } from 'src/features/store/model';
 import { selectIsAdminProfileRole } from 'src/features/store/model/slices/profile';
 import { selectProductError } from 'src/features/store/model/slices/product';
@@ -19,6 +20,8 @@ const Warehouse: FC = () => {
             <TooltipPanel text={productError} />
           </div>
           <ProductManagementForm />
+          <br />
+          <CategoryManagementForm />
           <Outlet />
         </>
       ) : (

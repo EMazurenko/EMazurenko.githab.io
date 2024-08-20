@@ -5,6 +5,7 @@ import { init } from 'src/features/store/model/slices/init';
 import { profile } from 'src/features/store/model/slices/profile';
 import { token } from 'src/features/store/model/slices/token';
 import { product } from 'src/features/store/model/slices/product';
+import { category } from 'src/features/store/model/slices/category';
 import { rootSaga } from 'src/features/store/model/sagas';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -16,6 +17,7 @@ export const store = configureStore({
     profile,
     token,
     product,
+    category,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(sagaMiddleware),
 });

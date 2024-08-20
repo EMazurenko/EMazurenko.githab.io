@@ -1,8 +1,18 @@
 export const enModals = {
-  addProduct: {
-    title: 'Creating product',
+  product: {
+    add: {
+      title: 'Creating product',
+    },
+    edit: {
+      title: 'Editing product {productId}',
+    },
   },
-  editProduct: {
-    title: 'Editing product {productId}',
+  category: {
+    add: {
+      title: 'Creating category',
+    },
+    edit: {
+      title: 'Editing category {categoryId}',
+    },
   },
 };

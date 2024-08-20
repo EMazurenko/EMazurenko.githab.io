@@ -1,0 +1,43 @@
+@import 'src/shared/ui/variables';
+
+.root {
+  font-family: sans-serif;
+  font-size: 18px;
+  @include theme(color, app_text);
+
+  .status_container {
+    display: flex;
+    align-items: center;
+
+    .status_label {
+      font-weight: bold;
+      @include theme(color, main_color);
+    }
+
+    .buttons_container {
+      margin-left: auto;
+
+      button {
+        @include button_style();
+        border-radius: 5px;
+        padding: 8px;
+        padding-inline-start: 5px;
+        font-family: sans-serif;
+        font-size: 16px;
+        margin-left: 5px;
+
+        &:hover {
+          @include button_style_hover();
+        }
+
+        &:active {
+          @include button_style_active();
+        }
+      }
+    }
+  }
+}
+
+.hidden {
+  visibility: hidden;
+}

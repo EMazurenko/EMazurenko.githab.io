@@ -77,16 +77,53 @@ export const enForms = {
       },
     },
   },
-  productManagement: {
-    title: 'Creation/Editing products',
+  category: {
+    edit: {
+      title: 'Editing',
+      submit: 'Update',
+    },
+    create: {
+      title: 'Creation',
+      submit: 'Save',
+    },
     inputs: {
-      productId: {
-        label: 'Product',
+      name: {
+        label: 'Category name',
+        placeholder: '',
+      },
+      photo: {
+        label: 'Link to category photo',
+        placeholder: 'URL',
       },
     },
-    buttons: {
-      add: 'Add product',
-      edit: 'Edit product',
+  },
+  productManagement: {
+    product: {
+      title: 'Creation/Editing products',
+      inputs: {
+        productId: {
+          label: 'Product',
+        },
+      },
+      buttons: {
+        add: 'Add product',
+        edit: 'Edit product',
+      },
     },
+    category: {
+      title: 'Creation/Editing categories',
+      inputs: {
+        categoryId: {
+          label: 'Category',
+        },
+      },
+      buttons: {
+        add: 'Add category',
+        edit: 'Edit category',
+      },
+    },
+  },
+  orders: {
+    title: 'Orders',
   },
 };

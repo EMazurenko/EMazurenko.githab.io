@@ -8,6 +8,7 @@ export const ruErrors = {
   },
   modals: {
     productNotExists: 'Продукт "{productId}" не существует',
+    categoryNotExists: 'Категория "{categoryId}" не существует',
   },
   pageNotFound: 'Страница <i>{{path}}</i> не найдена.',
   authorization: {

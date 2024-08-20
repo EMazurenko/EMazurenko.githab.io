@@ -1,11 +1,11 @@
 {
-  "name": "react-start-template",
+  "name": "e-market",
   "version": "1.0.0",
   "description": "Start repo with required configuration",
   "main": "src/index.tsx",
-  "author": "Igor <spirit-drive@yandex.ru>",
+  "author": "Evgenyi Mazurenko <evgenyi.mazurenko@gmail.com>",
   "scripts": {
-    "start": "webpack serve --mode development --env REACT_APP_USE_IN_MEMORY_SERVICES=false",
+    "start": "webpack serve --mode development --env REACT_APP_USE_SERVICES_MODE=rest",
     "build": "webpack --mode production",
     "test": "jest src",
     "lint": "eslint src --fix",
@@ -70,6 +70,7 @@
     "clsx": "^1.2.1",
     "i18next": "^23.11.2",
     "i18next-browser-languagedetector": "^7.2.1",
+    "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.51.4",

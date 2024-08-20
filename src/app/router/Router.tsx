@@ -11,6 +11,7 @@ import { EditProductModal, AddProductModal } from 'src/features/manageProduct/ui
 import { Auth } from 'src/pages/auth/ui';
 import { LogoutProfile } from 'src/features/logoutProfile/ui';
 import { AuthorizedRouter } from 'src/features/authorizedRouter/ui';
+import { AddCategoryModal, EditCategoryModal } from 'src/features/manageCategory/ui';
 
 const router = createHashRouter(
   createRoutesFromElements(
@@ -26,10 +27,19 @@ const router = createHashRouter(
         <Route path="cart" element={<Cart />} />
         <Route path="products" element={<Products />} />
         <Route path="warehouse" element={<Warehouse />}>
-          <Route path="add" element={<AddProductModal />} />
-          <Route path="edit">
-            <Route index element={<Navigate to={'/warehouse'} replace />} />
-            <Route path=":productId" element={<EditProductModal />} />
+          <Route path="product" element={<Outlet />}>
+            <Route path="add" element={<AddProductModal />} />
+            <Route path="edit">
+              <Route index element={<Navigate to={'/warehouse'} replace />} />
+              <Route path=":productId" element={<EditProductModal />} />
+            </Route>
+          </Route>
+          <Route path="category" element={<Outlet />}>
+            <Route path="add" element={<AddCategoryModal />} />
+            <Route path="edit">
+              <Route index element={<Navigate to={'/warehouse'} replace />} />
+              <Route path=":categoryId" element={<EditCategoryModal />} />
+            </Route>
           </Route>
         </Route>
         <Route path="*" element={<NotFound />} />

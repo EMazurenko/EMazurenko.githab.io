@@ -6,9 +6,16 @@ type ProfileWithPassword = Profile & { password: string };
 type ProfileStoreType = { [email: string]: ProfileWithPassword };
 
 export class ProfileServiceInMemory implements ProfileService {
-  private profileStore: ProfileStoreType = {
-    'admin@email.ru': { email: 'admin@email.ru', role: ProfileRole.ADMIN, password: 'password' },
-  };
+  private static readonly ADMIN_EMAIL: string = 'admin@email.ru';
+  private profileStore: ProfileStoreType = {};
+
+  constructor() {
+    this.profileStore[ProfileServiceInMemory.ADMIN_EMAIL] = {
+      email: ProfileServiceInMemory.ADMIN_EMAIL,
+      role: ProfileRole.ADMIN,
+      password: 'password',
+    };
+  }
 
   add(email: string, password: string, role: ProfileRole = ProfileRole.USER): Promise<ProfileAuthOutput> {
     if (this.exists(email)) {
@@ -52,6 +59,10 @@ export class ProfileServiceInMemory implements ProfileService {
     updatedProfile = { ...updatedProfile, ...profile };
     this.profileStore[email] = updatedProfile;
     return Promise.resolve<Profile>(updatedProfile);
+  }
+
+  get(): Promise<Profile> {
+    return Promise.resolve<Profile>(this.profileStore[ProfileServiceInMemory.ADMIN_EMAIL]);
   }
 
   private exists(email: string): boolean {

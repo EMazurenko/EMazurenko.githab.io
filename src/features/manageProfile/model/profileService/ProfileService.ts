@@ -9,4 +9,5 @@ export interface ProfileService {
   add: (email: string, password: string, role?: ProfileRole) => Promise<ProfileAuthOutput>;
   update: (profile: Profile) => Promise<Profile>;
   check: (email: string, password: string) => Promise<ProfileAuthOutput>;
+  get: () => Promise<Profile>;
 }

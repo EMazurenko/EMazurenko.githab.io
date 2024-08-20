@@ -30,55 +30,6 @@ export type ServerErrors = {
   }[];
 };
 
-type Category = {
-  id: string;
-  name: string;
-  photo?: string;
-  createdAt: Date;
-  updatedAt: Date;
-  commandId: string;
-};
-
-type Product = {
-  id: string;
-  name: string;
-  photo?: string;
-  desc?: string;
-  createdAt: Date;
-  updatedAt: Date;
-  oldPrice?: number;
-  price: number;
-  commandId: string;
-  category: Category;
-};
-
-export type Order = {
-  id: string;
-  products: OrderProduct[];
-  user: ProfileResult;
-  status: OrderStatus;
-  createdAt: Date;
-  updatedAt: Date;
-  commandId: string;
-};
-
-type OrderProduct = {
-  _id: string; // служебный id - это не id продукта
-  product: Product;
-  quantity: number;
-};
-
-export enum OrderStatus {
-  PendingConfirmation = 'pending_confirmation',
-  Processing = 'processing',
-  Packaging = 'packaging',
-  WaitingForDelivery = 'waiting_for_delivery',
-  InTransit = 'in_transit',
-  Delivered = 'delivered',
-  ReturnRequested = 'return_requested',
-  OrderCancelled = 'order_cancelled',
-}
-
 export enum ErrorCode {
   ERR_INCORRECT_EMAIL_OR_PASSWORD = 'ERR_INCORRECT_EMAIL_OR_PASSWORD', // Если не корректный email или пароль
   ERR_ACCOUNT_ALREADY_EXIST = 'ERR_ACCOUNT_ALREADY_EXIST', // При регистрации если пользователь уже существует

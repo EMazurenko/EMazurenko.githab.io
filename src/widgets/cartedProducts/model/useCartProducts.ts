@@ -5,6 +5,7 @@ import { useCallback, useState } from 'react';
 import { coreService } from 'src/features/coreService/model';
 import { OrderInput } from 'src/features/orderProducts/model/orderService';
 import { useTranslation } from 'react-i18next';
+import { mapStatus } from 'src/entities/order/model/useChangeStatus';
 
 export const useCartProducts = () => {
   const { t } = useTranslation();
@@ -12,11 +13,12 @@ export const useCartProducts = () => {
   const products = useAppSelector(selectProducts);
   const inCartProductIds = useAppSelector(selectCart).products;
   const inCartProducts = products.filter((p) => p.id in inCartProductIds);
+  const costCart = inCartProducts.reduce((acc, p) => acc + p.price * inCartProductIds[p.id], 0);
   const [orderStatus, setOrderStatus] = useState<string>();
 
   const setTextResult = useCallback(
     (text) => {
-      setOrderStatus(`${t('order.status', 'Статус заказа')}: ${text}`);
+      setOrderStatus(`${t('order.status', 'Статус заказа')}: ${mapStatus(text, t)}`);
     },
     [t, setOrderStatus]
   );
@@ -29,7 +31,7 @@ export const useCartProducts = () => {
     };
     setOrderStatus('');
     coreService
-      .order(orderInput as OrderInput)
+      .createOrder(orderInput as OrderInput)
       .then(({ status }) => {
         setTextResult(status);
         dispatch(clearCart());
@@ -37,5 +39,5 @@ export const useCartProducts = () => {
       .catch((reason) => setTextResult(reason.message));
   }, [inCartProductIds, setTextResult, setOrderStatus, dispatch]);
 
-  return { inCartProducts, onOrderProducts: handleOrderProducts, orderStatus };
+  return { inCartProducts, onOrderProducts: handleOrderProducts, orderStatus, costCart };
 };

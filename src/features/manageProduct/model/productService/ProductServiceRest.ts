@@ -1,6 +1,5 @@
 import { ProductLoadOutput, ProductService } from 'src/features/manageProduct/model/productService/ProductService';
 import { Product } from 'src/entities/product/model/types';
-import { Category } from 'src/entities/category/model/types';
 
 export class ProductServiceRest implements ProductService {
   private static readonly INIT_LOAD_COUNT = 6;
@@ -48,21 +47,6 @@ export class ProductServiceRest implements ProductService {
     });
   }
 
-  getCategories(): Promise<Category[]> {
-    return fetch(`${this.serverUrl}/categories`, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json;charset=utf-8',
-      },
-    }).then((response) => {
-      if (response.ok)
-        return response.json().then((res) => {
-          return Promise.resolve(res.data.filter((c) => c.commandId === this.commandId));
-        });
-      else return Promise.reject(response.json());
-    });
-  }
-
   initLoad(): Promise<ProductLoadOutput> {
     return fetch(
       `${this.serverUrl}/products?${new URLSearchParams({
@@ -91,14 +75,21 @@ export class ProductServiceRest implements ProductService {
   }
 
   loadMore(): Promise<ProductLoadOutput> {
-    const newLastIndex = Math.min(this.products.length, this.lastIndex + ProductServiceRest.MORE_LOAD_COUNT);
-    const products = this.products.slice(this.lastIndex, newLastIndex);
-    this.lastIndex = newLastIndex;
+    if (this.products) {
+      const newLastIndex = Math.min(this.products.length, this.lastIndex + ProductServiceRest.MORE_LOAD_COUNT);
+      const products = this.products.slice(this.lastIndex, newLastIndex);
+      this.lastIndex = newLastIndex;
 
-    return Promise.resolve({
-      products,
-      hasMoreProducts: this.hasMoreProducts(),
-    });
+      return Promise.resolve({
+        products,
+        hasMoreProducts: this.hasMoreProducts(),
+      });
+    } else {
+      return Promise.resolve({
+        products: [],
+        hasMoreProducts: false,
+      });
+    }
   }
 
   private hasMoreProducts(): boolean {

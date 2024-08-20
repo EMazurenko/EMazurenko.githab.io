@@ -1,0 +1,21 @@
+@import 'src/shared/ui/variables';
+
+.root {
+  display: grid;
+  grid-template-columns: auto auto;
+  border-radius: 5px;
+  border: 2px solid;
+  @include theme(background-color, main_bg);
+  @include theme(border-color, main_color);
+  padding: 5px;
+  min-width: 220px;
+}
+
+.cost_label {
+  align-self: center;
+  justify-self: left;
+}
+
+.order_button {
+  justify-self: right;
+}

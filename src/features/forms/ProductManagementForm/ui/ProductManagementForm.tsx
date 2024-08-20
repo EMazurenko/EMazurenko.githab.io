@@ -21,31 +21,31 @@ const ProductManagementForm: FC<ProductManagementFormProps> = ({ t }) => {
   const productIds = products.map((p) => ({ value: p.id, text: p.name }));
 
   const handleAddProduct = () => {
-    navigate('/warehouse/add');
+    navigate('/warehouse/product/add');
   };
 
   const handleEditProduct = () => {
-    navigate('/warehouse/edit/' + getValues('productId'));
+    navigate('/warehouse/product/edit/' + getValues('productId'));
   };
 
   return (
-    <FormContainer className={s.root} title={t('productManagement.title', 'Добавление/Редактирование товаров')}>
+    <FormContainer className={s.root} title={t('productManagement.product.title', 'Добавление/Редактирование товаров')}>
       <div>
         <FormButton type={'button'} onClick={handleAddProduct}>
-          {t('productManagement.buttons.add', 'Добавить продукт')}
+          {t('productManagement.product.buttons.add', 'Добавить продукт')}
         </FormButton>
 
         <hr />
 
         <FormInput
-          label={t('productManagement.inputs.productId.label', 'Редактировать продукт')}
+          label={t('productManagement.product.inputs.productId.label', 'Продукт')}
           inputType={FormInputsTypes.select}
           selectOptions={productIds}
           {...register('productId')}
         />
 
         <FormButton type={'button'} onClick={handleEditProduct}>
-          {t('productManagement.buttons.edit', 'Редактировать продукт')}
+          {t('productManagement.product.buttons.edit', 'Редактировать продукт')}
         </FormButton>
       </div>
     </FormContainer>

@@ -8,6 +8,7 @@ export const enErrors = {
   },
   modals: {
     productNotExists: 'Product "{productId}" not exists',
+    categoryNotExists: 'Category "{categoryId}" not exists',
   },
   pageNotFound: 'Page <i>{{path}}</i> not found.',
   authorization: {

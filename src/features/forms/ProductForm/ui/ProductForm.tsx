@@ -6,7 +6,7 @@ import { Product } from 'src/entities/product/model/types';
 import { useProductFormMode } from 'src/features/forms/ProductForm/model/useProductFormMode';
 import { FormButton, FormContainer, FormInput, FormInputsTypes } from 'src/shared/ui/form';
 import s from './ProductForm.module.scss';
-import PhotoPreview from 'src/features/forms/ProductForm/ui/PhotoPreview/PhotoPreview';
+import PhotoPreview from 'src/shared/ui/form/PhotoPreview/PhotoPreview';
 
 const MIN_PRICE_VALUE = 0.01;
 
