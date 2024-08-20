@@ -31,7 +31,7 @@ export class OrderServiceRest implements OrderService {
   }
 
   getOrders(): Promise<Order[]> {
-    const decodedToken: { id: string } = jwtDecode(this.token);
+    const decodedToken: { id: string } = this.token && jwtDecode(this.token);
 
     return fetch(
       `${this.serverUrl}/orders?${new URLSearchParams({

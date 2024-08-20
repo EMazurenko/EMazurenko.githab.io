@@ -38,7 +38,8 @@ const saveToken =
 const clearToken = (): StoreThunk => (dispatch) => {
   const token = null;
   dispatch(setToken(token));
-  sessionStorage.setItem(TOKEN_KEY, token);
+  sessionStorage.removeItem(TOKEN_KEY);
+  coreService.setToken(undefined);
 };
 
 const restoreToken = (): StoreThunk => (dispatch) => {

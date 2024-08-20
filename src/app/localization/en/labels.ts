@@ -17,6 +17,7 @@ export const enLabels = {
   order: {
     button: 'Order',
     status: 'Status order',
+    needAuth: 'Log in, please',
   },
   orderCard: {
     orderTitle: {
