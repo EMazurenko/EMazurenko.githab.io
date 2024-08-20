@@ -1,0 +1,16 @@
+@import 'src/shared/ui/variables.scss';
+@import '../OrderDetails.module';
+
+.root {
+  width: 100%;
+  align-items: center;
+  //@include theme(box-shadow, product_card_box_shadow);
+  @include grid_format();
+  @include font_format(16px);
+  @include theme(color, second_color);
+}
+
+.product_image {
+  @include product_image_style(60px);
+  margin: 5px;
+}

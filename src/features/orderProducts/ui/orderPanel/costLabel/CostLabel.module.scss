@@ -1,0 +1,7 @@
+@import 'src/shared/ui/variables';
+
+.root {
+  @include price_style(18px);
+  margin-left: 10px;
+  margin-right: 10px;
+}

@@ -1,18 +1,11 @@
 import { TFunction } from 'i18next';
 import { useMemo } from 'react';
-
-type Mode = {
-  labels: {
-    title: string;
-    submit: string;
-  };
-  isEdit: boolean;
-};
+import { FormMode } from 'src/shared/ui/form';
 
 export const useProductFormMode = (t: TFunction, productId: string) => {
   const isEditMode = !!productId;
 
-  const mode: Mode = useMemo(() => {
+  const mode: FormMode = useMemo(() => {
     if (isEditMode) {
       return {
         labels: {

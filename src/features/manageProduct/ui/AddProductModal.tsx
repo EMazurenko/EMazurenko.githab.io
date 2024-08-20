@@ -10,7 +10,7 @@ const AddProductModal: FC<AddProductModalProps> = ({ t }) => {
   const { onClose } = useOnCloseProductForm();
 
   return (
-    <ModalWindow title={t('addProduct.title', 'Добавление продукта')} onClose={onClose}>
+    <ModalWindow title={t('product.add.title', 'Добавление продукта')} onClose={onClose}>
       <ProductForm onSubmit={onClose} />
     </ModalWindow>
   );

@@ -1,14 +1,14 @@
 import React, { FC } from 'react';
 import s from './CartedProducts.module.scss';
 import { ProductList } from 'src/features/listProduct/ui';
-import { OrderButton } from 'src/features/orderProducts/ui';
+import { OrderPanel } from 'src/features/orderProducts/ui';
 import { useCartProducts } from 'src/widgets/cartedProducts/model/useCartProducts';
 import { TooltipPanel } from 'src/shared/ui/tooltipPanel';
 
 const TOOLTIP_WIDTH = 400;
 
 const CartedProducts: FC = () => {
-  const { inCartProducts, onOrderProducts, orderStatus } = useCartProducts();
+  const { inCartProducts, onOrderProducts, orderStatus, costCart } = useCartProducts();
 
   return (
     <>
@@ -16,7 +16,7 @@ const CartedProducts: FC = () => {
         <>
           <ProductList typeCard={'InCart'} products={inCartProducts} />
           <div className={s.order}>
-            <OrderButton onClick={onOrderProducts} />
+            <OrderPanel onOrderProducts={onOrderProducts} costOrder={costCart} />
           </div>
         </>
       ) : (

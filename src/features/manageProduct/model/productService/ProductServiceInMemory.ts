@@ -1,5 +1,4 @@
 import { ProductLoadOutput, ProductService } from 'src/features/manageProduct/model/productService/ProductService';
-import { Category } from 'src/entities/category/model/types';
 import { createProductForId } from 'src/features/createRandomProduct/api';
 import { Product } from 'src/entities/product/model/types';
 
@@ -27,21 +26,6 @@ export class ProductServiceInMemory implements ProductService {
         hasMoreProducts: true,
       });
     }
-  }
-
-  getCategories(): Promise<Category[]> {
-    return Promise.resolve([
-      { id: '1', name: 'cat_1', photo: 'file://photo_cat_1' },
-      { id: '2', name: 'cat_2' },
-      { id: '3', name: 'cat_3', photo: 'file://photo_cat_3' },
-      { id: '4', name: 'cat_4' },
-      { id: '5', name: 'cat_5', photo: 'file://photo_cat_5' },
-      { id: '6', name: 'cat_6' },
-      { id: '7', name: 'cat_7' },
-      { id: '8', name: 'cat_8' },
-      { id: '9', name: 'cat_9' },
-      { id: '10', name: 'cat_10' },
-    ]);
   }
 
   private createProducts(count: number): Product[] {

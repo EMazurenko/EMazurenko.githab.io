@@ -104,8 +104,8 @@ module.exports = (env, args) => {
       new webpack.DefinePlugin({
         process: {
           env: {
-            REACT_APP_USE_IN_MEMORY_SERVICES: env.REACT_APP_USE_IN_MEMORY_SERVICES,
-            REACT_APP_SERVER_URL: JSON.stringify('https://19429ba06ff2.vps.myjino.ru/api'),
+            REACT_APP_USE_SERVICES_MODE: JSON.stringify(env.REACT_APP_USE_SERVICES_MODE),
+            REACT_APP_SERVER_REST_URL: JSON.stringify('https://19429ba06ff2.vps.myjino.ru/api'),
           },
         },
       }),

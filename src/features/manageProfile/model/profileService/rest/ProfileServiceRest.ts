@@ -16,6 +16,10 @@ export class ProfileServiceRest implements ProfileService {
     this.authService = new AuthService(serverUrl, commandId);
   }
 
+  setToken(token: string) {
+    this.token = token;
+  }
+
   add(email: string, password: string): Promise<ProfileAuthOutput> {
     return this.auth(email, password, true);
   }
@@ -40,11 +44,25 @@ export class ProfileServiceRest implements ProfileService {
       .then((profileResult) => this.parseProfile(profileResult));
   }
 
+  get(): Promise<Profile> {
+    return fetch(`${this.serverUrl}/profile`, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json;charset=utf-8',
+        Authorization: `Bearer ${this.token}`,
+      },
+    })
+      .then((response) => {
+        if (response.ok) return response.json();
+        else return Promise.reject(response.json());
+      })
+      .then((profileResult) => this.parseProfile(profileResult));
+  }
+
   private auth(email: string, password: string, isRegistration: boolean): Promise<ProfileAuthOutput> {
     return (
       isRegistration ? this.authService.signup({ email, password }) : this.authService.signin({ email, password })
     ).then(({ profile, token }) => {
-      this.token = token;
       return Promise.resolve({ profile: this.parseProfile(profile), token });
     });
   }

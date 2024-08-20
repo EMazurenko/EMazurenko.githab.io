@@ -1,6 +1,6 @@
 import { Profile, ProfileRole } from 'src/entities/profile/model/types';
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { StoreState } from 'src/features/store/model';
+import { StoreState, StoreThunk } from 'src/features/store/model';
 import { ProfileAuthOutput } from 'src/features/manageProfile/model/profileService';
 import { AuthPair } from 'src/shared/model/types';
 import { coreService } from 'src/features/coreService/model';
@@ -72,3 +72,16 @@ export const authorize = createAsyncThunk(
     return response;
   }
 );
+
+export const loadProfile = (): StoreThunk => (dispatch) => {
+  dispatch(clearError());
+  coreService
+    .getProfile()
+    .then((profile) => {
+      dispatch(setProfile(profile));
+    })
+    .catch((reason) => {
+      console.error(reason);
+      dispatch(setError(reason.message));
+    });
+};

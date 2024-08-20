@@ -19,7 +19,7 @@ const EditProductModal: FC<EditProductModalProps> = ({ t }) => {
 
   return (
     <ModalWindow
-      title={t('editProduct.title', { defaultValue: TITLE_TEMPLATE }).replace('{productId}', productId)}
+      title={t('product.edit.title', { defaultValue: TITLE_TEMPLATE }).replace('{productId}', productId)}
       onClose={onClose}
     >
       {existsProduct ? (

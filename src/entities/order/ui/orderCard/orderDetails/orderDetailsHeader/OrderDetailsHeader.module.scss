@@ -1,0 +1,12 @@
+@import 'src/shared/ui/variables';
+@import '../OrderDetails.module';
+
+.root {
+  width: 100%;
+  align-items: center;
+  @include grid_format();
+  //@include theme(box-shadow, product_card_box_shadow);
+  @include font_format(18px);
+  font-weight: bold;
+  @include theme(color, second_color);
+}

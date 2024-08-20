@@ -1,4 +1,4 @@
-import { Order } from 'src/features/coreService/model/types';
+import { Order, OrderStatus } from 'src/entities/order/model/types';
 
 export type OrderInput = {
   products: [
@@ -9,6 +9,13 @@ export type OrderInput = {
   ];
 };
 
+export type ChangeStatus = {
+  id: string;
+  status: OrderStatus;
+};
+
 export interface OrderService {
-  order(input: OrderInput): Promise<Order>;
+  create(input: OrderInput): Promise<Order>;
+  changeStatus(input: ChangeStatus): Promise<Order>;
+  getOrders(): Promise<Order[]>;
 }

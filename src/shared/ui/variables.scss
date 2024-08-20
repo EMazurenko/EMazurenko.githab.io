@@ -25,6 +25,20 @@ $second_color: #7d2304;
   text-align: center;
 }
 
+@mixin price_style($font_size) {
+  font-weight: bold;
+  font-style: italic;
+  font-size: $font_size;
+  @include theme(color, main_color);
+}
+
+@mixin product_image_style($image_size) {
+  @include square_size($image_size);
+  border: 1px solid;
+  @include theme(border-color, main_color);
+  border-radius: 5px;
+}
+
 @mixin button_style_hover() {
   @include theme(background-color, button_bg_hover);
 }
